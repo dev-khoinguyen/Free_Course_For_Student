@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/homepage.css" />
+</head>
+
+<body>
+    
+
+<section class="about-us-section">
+  <div class="top-decorations">
+    <div class="decoration-line"></div>
+    <div class="decoration-line"></div>
+  </div>
+  
+  <header class="header-bar">
+    <div class="header-content">
+      <div class="logo">logo</div>
+      <form class="search-container" role="search">
+        <label for="search-input" class="visually-hidden">Tìm kiếm thông tin</label>
+        <input id="search-input" class="search-input" type="search" placeholder="Tìm kiếm thông tin" aria-label="Tìm kiếm thông tin">
+        <button type="submit" class="search-button">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6d4e7cd10418307bb2d67ddc8650e03287fd122c156f0434ec5ac9fe35b21faf?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314" alt="Search" class="search-icon">
+        </button>
+      </form>
+    </div>
+  </header>
+
+  <div class="main-image" role="img" aria-label="Decorative image"></div>
+
+  <h2 class="section-title">VỀ CHÚNG TÔI</h2>
+
+  <p class="section-description">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
+</section>
+@RenderBody();
+
+
+
+
+
+
+
+
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
