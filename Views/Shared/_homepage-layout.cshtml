@@ -2,54 +2,96 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/homepage.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="/css/homepage.css" />
+  <link href="/css/owl.carousel.min.css" rel="stylesheet">
+  <link href="/css/owl.carousel.css" rel="stylesheet">
+   <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-    
 
-<section class="about-us-section">
-  <div class="top-decorations">
-    <div class="decoration-line"></div>
-    <div class="decoration-line"></div>
-  </div>
-  
-  <header class="header-bar">
-    <div class="header-content">
-      <div class="logo">logo</div>
+
+  <section class="header-section">
+    <div class="top-decorations">
+      <div class="decoration-line"></div>
+      <div class="decoration-line"></div>
+    </div>
+    <div class="header-bar"></div>
+    <header class="header-content">
+      <h1 class="logo">logo</h1>
       <form class="search-container" role="search">
-        <label for="search-input" class="visually-hidden">Tìm kiếm thông tin</label>
-        <input id="search-input" class="search-input" type="search" placeholder="Tìm kiếm thông tin" aria-label="Tìm kiếm thông tin">
+        <label for="search-input" class="visually-hidden">Tìm kiếm thông
+          tin</label>
+        <input type="search" id="search-input" class="search-input" placeholder="Tìm kiếm thông tin"
+          aria-label="Tìm kiếm thông tin">
         <button type="submit" class="search-button">
-          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6d4e7cd10418307bb2d67ddc8650e03287fd122c156f0434ec5ac9fe35b21faf?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314" alt="Search" class="search-icon">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/6d4e7cd10418307bb2d67ddc8650e03287fd122c156f0434ec5ac9fe35b21faf?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314"
+            alt="Search" class="search-icon">
         </button>
       </form>
+    </header>
+  </section>
+  @* ------------------------- *@
+ 
+
+  @RenderBody();
+  <!---------------- footer ------------ -->
+  <footer class="footer">
+    <div class="footer-content">
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f9add78c87afe4897856d73e48d894b434cb83938fa1bf6203d1a8ed5cf70728?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314"
+        alt="" class="footer-background" />
+      <div class="footer-wrapper">
+        <div class="footer-columns">
+          <section class="contact-column">
+            <div class="contact-info">
+              <div class="contact-header">
+                <h2>Liên Hệ</h2>
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab53837b844ac83ab3714a7e3fc6635e677cb1340b49520e11cacbf070adbb05?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314"
+                  alt="" class="contact-icon" />
+              </div>
+              <p class="contact-detail">(+84)**********</p>
+              <p class="contact-detail">gmail:.............</p>
+              <p class="contact-detail">địa chỉ</p>
+            </div>
+          </section>
+          <section class="products-column">
+            <div class="products-header">
+              <h2 class="products-title">Sản phẩm</h2>
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/dee949e90800672bffdd22e859dfc2da29879f2c2e3e36bd7fe3ba09f17799b2?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314"
+                alt="" class="products-icon" />
+            </div>
+          </section>
+          <section class="newsletter-column">
+            <div class="newsletter-content">
+              <h2 class="newsletter-title">Nhận thông tin định kì</h2>
+              <section class="registration-container">
+                <button class="registration-button">Đăng kí</button>
+              </section>
+              <div class="logo" role="img" aria-label="Company logo">logo</div>
+            </div>
+          </section>
+        </div>
+      </div>
+      <p class="copyright">© 2024 ............................</p>
     </div>
-  </header>
-
-  <div class="main-image" role="img" aria-label="Decorative image"></div>
-
-  <h2 class="section-title">VỀ CHÚNG TÔI</h2>
-
-  <p class="section-description">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
-</section>
-@RenderBody();
+    <div class="footer-divider"></div>
+  </footer>
 
 
 
 
+  <script src="/js/jquery-3.7.1.min.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
 
-
-
-
-  <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
+
 </html>
