@@ -3,152 +3,180 @@
   padding: 0;
   text-shadow: none;
 }
+
 :root {
   --primary-color: #d9d9d9;
   --secondary-color: #FFFFFF;
-  --background-color: #ecf0f1;
+  --background-color: #919191;
   --title-color: #B5B5B5;
   --content-color: #5E5E5E;
+  --gray-color: #ccc;
+  --light-gray: #ddd;
+  --black-color: #333;
+  --footer-divider: #777;
 }
 
 @media (max-width: 991px) {
   .top-decorations {
-      margin-right: 10px;
+    margin-right: 10px;
   }
 
   .header-bar {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .header-content {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .logo {
-      font-size: 40px;
-      white-space: initial;
-      padding: 0 20px;
-      margin-left: 15%;
+    font-size: 40px;
+    white-space: initial;
+    padding: 0 20px;
+    margin-left: 15%;
   }
 
   .search-input {
-      padding: 0 20px;
-      margin-left: 5%;
+    padding: 0 20px;
+    margin-left: 5%;
   }
 
   .section-title {
-      font-size: 40px;
+    font-size: 40px;
   }
 
   .section-description {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .main-image {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   /* nganh dao tao section  */
   .section-description {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .section-title {
-      max-width: 100%;
-      margin-right: 10px;
-      font-size: 40px;
+    max-width: 100%;
+    margin-right: 10px;
+    font-size: 40px;
   }
 
   .info-content {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .info-column {
-      width: 100%;
-      margin-top: 40px;
+    width: 100%;
+    margin-top: 40px;
   }
 
   .content-wrapper {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
 
   .program-item {
-      width: 100%;
+    width: 100%;
   }
 
   .program-title {
-      padding: 100px 20px 0;
+    padding: 100px 20px 0;
   }
 
   .programs-column {
-      width: 100%;
-      margin-top: 32px;
+    width: 100%;
+    margin-top: 32px;
   }
 
   .programs-wrapper {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
 
   .navigation-dots {
-      margin-right: 10px;
+    margin-right: 10px;
   }
+
   .footer-content,
   .footer-wrapper {
-      max-width: 100%;
+    max-width: 100%;
   }
 
   .footer-columns {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
   }
 
   .contact-column,
   .products-column,
   .newsletter-column {
-      width: 100%;
-      margin-left: 0;
-      margin-top: 40px;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 40px;
   }
 
   .newsletter-form {
-      max-width: 100%;
-      margin-right: 2px;
-      padding-left: 20px;
+    max-width: 100%;
+    margin-right: 2px;
+    padding-left: 20px;
   }
 
   .newsletter-button {
-      padding: 0 20px;
+    padding: 0 20px;
   }
 
   .logo {
-      font-size: 40px;
-      margin-top: 40px;
-      white-space: initial;
-      padding: 0 20px;
+    font-size: 40px;
+    margin-top: 40px;
+    white-space: initial;
+    padding: 0 20px;
   }
 
   .copyright {
-      max-width: 100%;
-      margin: 40px 0 10px;
-      padding: 0 20px;
+    max-width: 100%;
+    margin: 40px 0 10px;
+    padding: 0 20px;
   }
 
   .footer-divider {
-      margin-right: 6px;
+    margin-right: 6px;
   }
+
   .registration-container {
-      max-width: 100%;
-      margin-right: 2px;
-      padding: 0 20px;
+    max-width: 100%;
+    margin-right: 2px;
+    padding: 0 20px;
   }
 
   .registration-button {
-      padding: 0 20px;
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-size: 40px;
+  }
+
+  .content-container {
+    max-width: 100%;
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+
+  .card-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .card {
+    margin-top: 40px;
+    padding: 100px 20px 0;
   }
 }
 
@@ -247,15 +275,14 @@
 /*----------------- slider ------------------ */
 .owl-style {
   display: flex;
-  min-height: 569px;
+  height: 100%;
   margin-top: 27px;
   width: 100%;
-
 }
 
 .item {
   background-image: url(/images/Subtract.png);
-  min-height: 569px;
+  min-height: 579px;
   width: 100%;
 }
 
@@ -363,18 +390,18 @@
 
 
 .kdqt {
-  background-color: #d9d9d9;
+  background-color: var(--primary-color);
   margin-right: -140px;
 }
 
 .tkdh {
-  background-color: #b5b5b5;
+  background-color: var(--title-color);
   margin-right: -188px;
   padding-bottom: 21px;
 }
 
 .ktpm {
-  background-color: #5E5E5E;
+  background-color: var(--content-color);
   padding-bottom: 23px;
 }
 
@@ -397,7 +424,7 @@
 }
 
 .dot-inactive {
-  background-color: #5E5E5E;
+  background-color: var(--content-color);
 }
 
 .visually-hidden {
@@ -438,8 +465,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  min-height: 503px;
   width: 100%;
+
 }
 
 .footer-background {
@@ -473,7 +500,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  color: #fff;
+  color: var(--secondary-color);
   font: 600 19px Roboto Flex, sans-serif;
 }
 
@@ -509,7 +536,7 @@
   position: relative;
   display: flex;
   gap: 40px 48px;
-  color: #fff;
+  color: var(--secondary-color);
   font: 600 26px Roboto Flex, sans-serif;
 }
 
@@ -539,7 +566,7 @@
   flex-grow: 1;
   flex-direction: column;
   font-family: Roboto Flex, sans-serif;
-  color: #fff;
+  color: var(--secondary-color);
   font-weight: 600;
 }
 
@@ -564,7 +591,7 @@
 
 .registration-button {
   border-radius: 0 8px 8px 0;
-  background-color: #6d6d6d;
+  background-color: var(--title-color);
   padding: 10px 28px;
   color: var(--secondary-color);
   font: 600 15px Roboto Flex, sans-serif;
@@ -573,7 +600,7 @@
 
 .logo {
   z-index: 10;
-  background-color: #a6a6a6;
+  background-color: var(--content-color);
   align-self: end;
   margin-top: 47px;
   font-size: 60px;
@@ -584,24 +611,177 @@
 
 .copyright {
   position: relative;
-  background-color: #444;
+  background-color: var(--content-color);
   z-index: 10;
-  color: #fff;
-  margin-top: 216px;
-  padding: 19px 70px;
+  color: var(--secondary-color);
+  margin-top: 199px;
+  padding: 19px 80px;
   font: 600 15px Roboto Flex, sans-serif;
   text-align: center;
 }
 
 .footer-divider {
-  background-color: #777;
+  background-color: var(--footer-divider);
   display: flex;
-  margin-top: 0px;
   width: 100%;
   max-width: 100%;
-  height: 187px;
+  height: 287px;
+}
+
+/*--------------- tri thuc --------------- */
+.knowledge-section {
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+
+
+}
+
+.section-title {
+  color: var(--title-color);
+  text-align: center;
+  margin-left: 14px;
+  font: 700 60px 'Roboto Flex', sans-serif;
+}
+
+.content-container {
+  z-index: 1;
+  background-image: url(/images/Subtract.png);
+  height: 720px;
+  margin-top: 82px;
+  width: 100%;
+  padding: 64px 61px;
+  margin-bottom: 335px;
+
+}
+
+.card-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  aspect-ratio: 0.803;
+  flex-grow: 1;
+  align-items: center;
+  color: var(--secondary-color);
+  padding: 64px 20px;
+  font: 500 20px 'Roboto Flex', sans-serif;
+  height: 354px;
+  width: 442px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cta-button {
+  position: relative;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  width: 112px;
+  max-width: 100%;
+  padding: 3px 6px 9px;
+  border: 1px solid var(--primary-color);
+  margin-top: 360px;
+  color: var(--secondary-color);
+}
+
+/* -----------form dang ki-------- */
+
+
+.form-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--background-color);
+  padding: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-placeholder {
+  width: 369px;
+  height: 527px;
+  background-image: url(/images/Subtract.png);
+  border: 1px solid var(--primary-color);
+  margin-right: 136px;
+}
+
+.contact-form {
+  background-color: var(--secondary-color);
+  padding: 50px;
+  border-radius: 10px;
+  width: 660px;
+  height: 537px;
+}
+
+.contact-form h2 {
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--black-color);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 30px;
+  border: 1px solid var(--gray-color);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  padding: 45px;
+  text-align: left;
 }
 
 
+.form-group textarea {
+  resize: vertical;
+}
 
+.form-row {
+  display: flex;
+  gap: 20px;
+}
 
+.form-row .form-group {
+  flex: 1;
+}
+
+.contact-form button {
+  margin-left: 80%;
+  padding: 15px 50px;
+  background-color: var(--light-gray);
+  border: 1px solid var(--gray-color);
+  border-radius: 15px;
+  font-size: 19px;
+  font-weight: bold;
+  color: var(--background-color);
+  cursor: pointer;
+  background: linear-gradient(90deg, background-color 80%, --secondary-color 100%);
+}
+
+.contact-form button:hover {
+  background-color: var(--gray-color);
+}
