@@ -8,7 +8,7 @@
   --primary-color: #d9d9d9;
   --secondary-color: #FFFFFF;
   --background-color: #919191;
-  --title-color: #B5B5B5;
+  --title-color: #1B58CE;
   --content-color: #5E5E5E;
   --gray-color: #ccc;
   --light-gray: #ddd;
@@ -61,7 +61,7 @@
   .section-title {
     max-width: 100%;
     margin-right: 10px;
-    font-size: 40px;
+    font-size: 35px;
   }
 
   .info-content {
@@ -281,9 +281,12 @@
 }
 
 .item {
-  background-image: url(/images/Subtract.png);
+  background-image: url(/images/image\ 2.png);
   min-height: 579px;
   width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* ----------  about-us section--------------  */
@@ -292,12 +295,6 @@
   text-align: center;
 }
 
-.section-title {
-  color: var(--title-color);
-  align-self: center;
-  margin-top: 37px;
-  font: 700 60px Roboto Flex, sans-serif;
-}
 
 .section-description {
   color: var(--content-color);
@@ -340,12 +337,6 @@
 }
 
 
-.section-title {
-  color: var(--title-color);
-  font-size: 55px;
-  font-weight: 700;
-  margin-right: 27px;
-}
 
 
 .section-description {
@@ -641,7 +632,7 @@
   color: var(--title-color);
   text-align: center;
   margin-left: 14px;
-  font: 700 60px 'Roboto Flex', sans-serif;
+  font: 700 53px 'Roboto Flex', sans-serif;
 }
 
 .content-container {
