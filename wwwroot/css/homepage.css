@@ -905,3 +905,44 @@
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+/* -------------thanh vien ----------- */
+.member-wrapper {
+  max-width: 1256px;
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between; /* Khoảng cách đều giữa các thẻ */
+  margin-bottom: 20px; /* Khoảng cách giữa các hàng */
+}
+
+.member {
+  background-image: url(/images/Subtract.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 378px;
+  height: 342px;
+  display: flex; /* Sử dụng Flexbox */
+  flex-direction: column; /* Sắp xếp chiều dọc */
+  justify-content: space-between; /* Căn giữa nội dung trong member */
+  
+}
+
+.member a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  transform: translateY(-2px);
+  padding: 0px 5px;
+  border-radius: 3px;
+  border: 1px solid var(--title-color);
+  margin-left: 30%; 
+  margin-top: auto;
+  width: 120px; 
+  text-align: center; 
+}
+
+
+
