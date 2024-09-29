@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "/Views/Shared/_homepage-layout.cshtml";
+}
+
+<div class="container-fluid contact">
+
+  <div class="form-wrapper">
+     <h2 class="section-title">Liên hệ chúng tôi</h2>
+    <form class="row g-3">
+      <div class="col-12">
+        <input type="text" class="form-control input-custom" id="inputName" placeholder="Tên*">
+      </div>
+      <div class="col-lg-6 col-12">
+        <input type="email" class="form-control input-custom" id="inputEmail" placeholder="Email*">
+      </div>
+      <div class="col-lg-6 col-12">
+        <input type="text" class="form-control input-custom" id="inputPhone" placeholder="Số điện thoại*">
+      </div>
+      <div class="col-12">
+        <textarea class="form-control input-textare-custom" id="inputMessage" rows="4" placeholder="Nội dung tin nhắn"></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary btn-primary btn-lg w-100 button-form">Gửi</button>
+      </div>
+    </form>
+  </div>
+</div>

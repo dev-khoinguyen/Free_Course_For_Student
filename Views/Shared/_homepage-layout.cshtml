@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="/css/homepage.css" />
   <link href="/css/owl.carousel.min.css" rel="stylesheet">
   <link href="/css/owl.carousel.css" rel="stylesheet">
-   <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -17,71 +17,98 @@
   <section class="header-section">
     <div class="top-decorations">
       <div class="decoration-line"></div>
+      <a href="#">Đăng nhập</a>
       <div class="decoration-line"></div>
+      <a href="#">Đăng kí</a>
     </div>
-    <div class="header-bar"></div>
-    <header class="header-content">
-      <h1 class="logo">logo</h1>
-      <form class="search-container" role="search">
-        <label for="search-input" class="visually-hidden">Tìm kiếm thông
-          tin</label>
-        <input type="search" id="search-input" class="search-input" placeholder="Tìm kiếm thông tin"
-          aria-label="Tìm kiếm thông tin">
-        <button type="submit" class="search-button">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/6d4e7cd10418307bb2d67ddc8650e03287fd122c156f0434ec5ac9fe35b21faf?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314"
-            alt="Search" class="search-icon">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid wrap-navbar">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </form>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link "asp-controller="Home" asp-action="Index">GIỚI THIỆU</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">NGÀNH ĐÀO TẠO</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">HỌC LIỆU</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">TIN TỨC</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" asp-controller="Home" asp-action="Contact">LIÊN HỆ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CHỨNG CHỈ</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header class="header-content">
+      <div class="logo"></div>
+      <div class="form-wrap">
+        <form class="search-container" role="search">
+          <label for="search-input" class="visually-hidden">Tìm kiếm thông
+            tin</label>
+          <input type="search" id="search-input" class="search-input" placeholder="Tìm kiếm thông tin"
+            aria-label="Tìm kiếm thông tin">
+          <button type="submit" class="search-button">
+            <img src="/images/search-logo.png" alt="Search" class="search-icon">
+          </button>
+        </form>
+        <div class="bell-logo"></div>
+      </div>
+
     </header>
   </section>
-<!---------------- body render ------------ -->
+  <!---------------- body render ------------ -->
   @RenderBody()
   <!---------------- footer ------------ -->
   <footer class="footer">
-    <div class="footer-content">
-      <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/f9add78c87afe4897856d73e48d894b434cb83938fa1bf6203d1a8ed5cf70728?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314"
-        alt="" class="footer-background" />
-      <div class="footer-wrapper">
-        <div class="footer-columns">
-          <section class="contact-column">
-            <div class="contact-info">
-              <div class="contact-header">
-                <h2>Liên Hệ</h2>
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab53837b844ac83ab3714a7e3fc6635e677cb1340b49520e11cacbf070adbb05?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314"
-                  alt="" class="contact-icon" />
-              </div>
-              <p class="contact-detail">(+84)**********</p>
-              <p class="contact-detail">gmail:.............</p>
-              <p class="contact-detail">địa chỉ</p>
+    <div class="container-fluid footer-content">
+
+      <div class="footer-columns">
+        <div class="contact-column col-lg-4 col-sm-12">
+          <div class="contact-info">
+            <div class="contact-header">
+              <h2 class="title-footer">Liên Hệ</h2>
             </div>
-          </section>
-          <section class="products-column">
-            <div class="products-header">
-              <h2 class="products-title">Sản phẩm</h2>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/dee949e90800672bffdd22e859dfc2da29879f2c2e3e36bd7fe3ba09f17799b2?placeholderIfAbsent=true&apiKey=9353569a3a3e4b28bd8525400308d314"
-                alt="" class="products-icon" />
-            </div>
-          </section>
-          <section class="newsletter-column">
-            <div class="newsletter-content">
-              <h2 class="newsletter-title">Nhận thông tin định kì</h2>
-              <section class="registration-container">
-                <button class="registration-button">Đăng kí</button>
-              </section>
-              <div class="logo" role="img" aria-label="Company logo">logo</div>
-            </div>
-          </section>
+            <p class="contact-detail">(+84)**********</p>
+            <p class="contact-detail">Gmail: **********************</p>
+            <p class="contact-detail">Địa chỉ: *********</p>
+          </div>
+        </div>
+        <div class="products-column col-lg-4 col-sm-12">
+          <div class="products-header">
+            <h2 class="title-footer">Sản phẩm</h2>
+
+          </div>
+        </div>
+        <div class="newsletter-column col-lg-4 col-sm-12">
+          <div class="newsletter-content">
+            <h2 class="title-footer">Nhận thông tin định kì</h2>
+            <section class="registration-container">
+              <button class="registration-button">Đăng kí</button>
+            </section>
+            <div class="logo-footer" role="img" aria-label="Company logo"></div>
+          </div>
         </div>
       </div>
-      <p class="copyright">© 2024 ............................</p>
-    </div>
-    <div class="footer-divider"></div>
-  </footer>
 
+
+    </div>
+    <p class="copyright">© 2024 ............................</p>
+  </footer>
+  
 
   <script src="/js/jquery-3.7.1.min.js"></script>
   <script src="/js/owl.carousel.min.js"></script>
