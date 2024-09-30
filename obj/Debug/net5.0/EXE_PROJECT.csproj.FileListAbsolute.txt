@@ -133,3 +133,4 @@ C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\ref\
 C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\EXE_PROJ.A0DA42B9.Up2Date
 C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
 C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\Certification.cshtml.g.cs
+C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\TrainingIndustry.cshtml.g.cs
