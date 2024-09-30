@@ -854,7 +854,7 @@
   text-align: center;
 }
 
-/*------------- contact---------------- */
+/*------------------------------------------- contact page------------------------------------------------ */
 .contact {
   background-image: url(/images/contact-background.png);
   background-position: center;
@@ -905,6 +905,7 @@
   outline: none;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
 /* -------------thanh vien ----------- */
 .member-wrapper {
   max-width: 1256px;
@@ -913,8 +914,10 @@
 
 .row {
   display: flex;
-  justify-content: space-between; /* Khoảng cách đều giữa các thẻ */
-  margin-bottom: 20px; /* Khoảng cách giữa các hàng */
+  justify-content: space-between;
+  /* Khoảng cách đều giữa các thẻ */
+  margin-bottom: 20px;
+  /* Khoảng cách giữa các hàng */
 }
 
 .member {
@@ -924,10 +927,13 @@
   background-size: cover;
   max-width: 378px;
   height: 342px;
-  display: flex; /* Sử dụng Flexbox */
-  flex-direction: column; /* Sắp xếp chiều dọc */
-  justify-content: space-between; /* Căn giữa nội dung trong member */
-  
+  display: flex;
+  /* Sử dụng Flexbox */
+  flex-direction: column;
+  /* Sắp xếp chiều dọc */
+  justify-content: space-between;
+  /* Căn giữa nội dung trong member */
+
 }
 
 .member a {
@@ -938,11 +944,200 @@
   padding: 0px 5px;
   border-radius: 3px;
   border: 1px solid var(--title-color);
-  margin-left: 30%; 
+  margin-left: 30%;
   margin-top: auto;
-  width: 120px; 
-  text-align: center; 
+  width: 120px;
+  text-align: center;
 }
 
+/*------------------------------------------- certificant page------------------------------------------------ */
+.title-certification {
+  text-align: left;
+  padding-left: 101px;
+  padding-bottom: 60px;
+}
 
+.name-certification {
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
 
+.custom-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-text {
+  color: var(--gray-color);
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.custom-form-input {
+  width: 100%;
+  padding: 20px;
+}
+
+.input-contain {
+  width: 89%;
+}
+
+.request-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  padding: 22px 30px;
+}
+
+.request-button:hover {
+  background-color: var(--primary-color);
+}
+
+/* my certification */
+.my-certification-wrapper {
+  border: 1px solid var(--dark-black-color);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 97px;
+}
+
+.my-certification-card {
+  padding: 42px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrap-btn-certification {
+  margin: 0 auto;
+}
+
+.btn-certification {
+  padding: 5px 20px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 2px;
+
+}
+
+.blog-preview {
+  border-radius: 0;
+  max-width: 812px;
+}
+
+.blog-content {
+  display: flex;
+  gap: 20px;
+}
+
+.blog-image {
+  border-radius: 4px;
+  background-color: var(--light-gray);
+  width: 310px;
+  max-width: 100%;
+  height: 192px;
+}
+
+.blog-text {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Roboto Flex', sans-serif;
+  color: var(--dark-black-color);
+  font-weight: 400;
+}
+
+.blog-title {
+  font-size: 24px;
+  font-weight: 700;
+  align-self: stretch;
+}
+
+.blog-excerpt {
+  font-size: 16px;
+  margin-top: 18px;
+}
+
+.blog-meta {
+  display: flex;
+  margin-top: 27px;
+  gap: 35px;
+  font-size: 12px;
+  color: var(--button-footer-color);
+  line-height: 1;
+}
+
+.meta-item {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.meta-separator {
+  width: 1px;
+  height: 12px;
+  border: 1px solid var(--footer-divider);
+}
+
+.meta-icon {
+  width: 12px;
+  height: 12px;
+  object-fit: contain;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* my certification */
+.content-certi-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-bottom: 80px;
+}
+.all-certi-wrap{
+  margin-bottom: 100px;
+}
+
+.content-row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.image-wrapper {
+  display: flex;
+  gap: 200px;
+}
+
+.image-box {
+  width: 100%; 
+  max-width: 543px;
+  height: 395px;
+  background-color: var(--secondary-color); 
+  background-image: url(/images/certi-placeholder.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+}
