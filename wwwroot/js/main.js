@@ -1,29 +1,24 @@
+
 $('.owl-carousel').owlCarousel({
-    loop:false,
-    margin:10,
-    items: 1,
-    autoplay: true,
-    dots: true, 
-    loop: true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:1
-        },
-        1000:{
-            items:1
-        }
-    }
-})
+  margin: 10,
+  items: 1,
+  autoplay: true,
+  dots: true,
+  loop: true,
+  responsive: {
+    0: { items: 1 },
+    600: { items: 1 },
+    1000: { items: 1 }
+  }
+});
+
 
 let currentCard = 1; // Khởi tạo số thứ tự card hiện tại
 
 function showCard(cardNumber) {
   // Ẩn tất cả các card
   const cards = document.querySelectorAll('.card-item');
-  cards.forEach(function(card) {
+  cards.forEach(function (card) {
     card.style.display = 'none';
   });
 
@@ -52,3 +47,27 @@ function showNextCard() {
 
 // Hiển thị card đầu tiên khi tải trang
 showCard(1);
+
+const sliderWrapper = document.querySelector('.slider-wrapper');
+const items = document.querySelectorAll('.slider-item');
+const itemsPerPage = 3; // Số thẻ hiển thị mỗi trang
+const totalItems = items.length;
+const totalPages = Math.ceil(totalItems / itemsPerPage); // Tính tổng số trang
+let currentPage = 0;
+
+document.getElementById('next').addEventListener('click', () => {
+    // Chuyển đến trang tiếp theo
+    currentPage = (currentPage + 1) % totalPages; 
+    updateSlider();
+});
+
+document.getElementById('prev').addEventListener('click', () => {
+    // Chuyển đến trang trước
+    currentPage = (currentPage - 1 + totalPages) % totalPages; 
+    updateSlider();
+});
+
+function updateSlider() {
+    const offset = -currentPage * (100 / totalPages);
+    sliderWrapper.style.transform = `translateX(${offset}%)`;
+}

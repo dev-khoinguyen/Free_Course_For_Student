@@ -23,16 +23,20 @@ namespace EXE_PROJECT.Controllers
             return View();
         }
 
-          public IActionResult Contact()
+        public IActionResult Contact()
         {
             return View();
         }
-        
-          public IActionResult Certification()
+
+        public IActionResult Certification()
         {
             return View();
         }
-           public IActionResult TrainingIndustry()
+        public IActionResult TrainingIndustry()
+        {
+            return View();
+        }
+        public IActionResult LeaningMaterials()
         {
             return View();
         }

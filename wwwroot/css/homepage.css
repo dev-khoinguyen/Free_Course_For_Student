@@ -338,7 +338,7 @@
   width: 100%;
 }
 
-.item {
+.owl-style .item {
   background-image: url(/images/background.png);
   min-height: 579px;
   width: 100%;
@@ -910,6 +910,7 @@
 .member-wrapper {
   max-width: 1256px;
   width: 100%;
+  margin-bottom: 90px;
 }
 
 .row {
@@ -1102,6 +1103,7 @@
   white-space: nowrap;
   border: 0;
 }
+
 /* my certification */
 .content-certi-wrap {
   display: flex;
@@ -1109,7 +1111,8 @@
   gap: 40px;
   margin-bottom: 80px;
 }
-.all-certi-wrap{
+
+.all-certi-wrap {
   margin-bottom: 100px;
 }
 
@@ -1124,20 +1127,315 @@ h2 {
   font-weight: 600;
   margin-bottom: 10px;
 }
+
 .image-wrapper {
   display: flex;
   gap: 200px;
 }
 
 .image-box {
-  width: 100%; 
+  width: 100%;
   max-width: 543px;
   height: 395px;
-  background-color: var(--secondary-color); 
+  background-color: var(--secondary-color);
   background-image: url(/images/certi-placeholder.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: 4px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 2px 4px var(--dark-black-color);
+}
+
+/*----------------------------------------  TrainingIndustry page--------------------------------------------- */
+.industry-wrap {
+  margin-top: 200px;
+  margin-bottom: 150px;
+}
+
+.industry-title {
+  text-align: left;
+  font-size: 40px;
+  padding-bottom: 30px;
+}
+
+.industry-description {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--content-color);
+}
+
+.img-industry {
+  width: 100%;
+  height: 418px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.img-industry {
+  color: var(--secondary-color);
+}
+
+.it-industry {
+  background-image: url(/images/it-industry.png);
+}
+
+.kdqt-industry {
+  background-image: url(/images/kdqt-industry.png);
+}
+
+.design-industry {
+  background-image: url(/images/design-industry.png);
+}
+
+/*---------------------------------------- Learning material page--------------------------------------- */
+.material-title {
+  color: var(--primary-color);
+  text-align: left;
+  margin-left: 94px;
+  margin-top: 80px;
+  font: 700 53px 'Roboto Flex', sans-serif;
+}
+
+.learning-wrapper {
+  border: 1px solid var(--dark-black-color);
+  max-width: 1313px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 87px;
+
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1300px;
+  margin: auto;
+  margin-bottom: 100px;
+  margin-top: 39px;
+}
+
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 40px;
+}
+
+.slider-item {
+  flex: 0 0 33.33%;
+  /* Chiều rộng mỗi nội dung 1/3 */
+  box-sizing: border-box;
+  padding: 20px;
+  text-align: center;
+
+}
+
+.slider-item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.wrap-div-learning {
+  display: flex;
+}
+
+.wrap-div-learning img {
+  width: 31px;
+  height: 29px;
+}
+
+/* button chuyen slider  */
+.button-container {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.button-learning {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  padding: 7px 20px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.slider-wrapper {
+  height: 300px;
+}
+
+.slider-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+/* button hoc lieu  */
+.btn-learning-custom {
+  display: inline-block;
+  padding: 6px 25px;
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-learning-custom:hover {
+  background-color: var(--ligt-blue-color);
+}
+
+.btn-learning-custom img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.material-inside-title {
+  color: var(--primary-color);
+  text-align: left;
+  margin-left: 14px;
+  margin-top: 80px;
+  font: 700 53px 'Roboto Flex', sans-serif;
+}
+
+/* material for you  */
+.material-for-you-wrapper {
+  margin-top: 70px;
+}
+
+.learning-card {
+  border-radius: 5px;
+  max-width: 357px;
+  font-family: Roboto Flex, sans-serif;
+  padding: 10px;
+}
+
+.card-content {
+  background-color: var(--ligt-blue-color);
+  box-shadow: 0 4px 4px var(--dark-black-color);
+  display: flex;
+  gap: 24px;
+  padding: 10px 27px 10px 10px;
+}
+
+.card-icon {
+  aspect-ratio: 0.97;
+  object-fit: contain;
+  width: 38px;
+  margin: auto 0;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0;
+  width: fit-content;
+}
+
+.card-title {
+  color: var(--dark-black-color);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.card-meta {
+  display: flex;
+  margin-top: 13px;
+  width: 100%;
+  gap: 20px;
+  font-size: 14px;
+  color: var(--content-color);
+  font-weight: 300;
+  justify-content: space-between;
+}
+
+.meta-item {
+  display: flex;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.meta-icon {
+  aspect-ratio: 1.07;
+  object-fit: contain;
+  width: 16px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+/* ---cac giao trinh section --- */
+.comment-material-title{
+  margin-bottom: 30px;
+}
+
+.comment-box {
+  border: 1px solid var(--button-footer-color);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.comment-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.comment-body {
+  background-color: var(--ligt-blue-color);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.reply-box {
+  background-color: var(--content-gray-color);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.reply-btn {
+  margin-left: 10px;
+}
+
+.comment-meta {
+  font-size: 12px;
+  color: var(--content-color);
+  text-align: right;
+}
+
+.reply-meta {
+  font-size: 12px;
+  color: var(--content-color);
+  text-align: left;
+}
+
+.comment-header {
+  font-size: 18px;
+  font-weight: bold;
 }
