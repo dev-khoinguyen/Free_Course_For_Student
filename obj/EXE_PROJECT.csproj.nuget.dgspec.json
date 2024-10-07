@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Van-Khoi\\Documents\\GitHub\\Free_Course_For_Student\\EXE_PROJECT.csproj": {}
+    "D:\\EXE_PROJECT\\Free_Course_For_Student\\EXE_PROJECT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Van-Khoi\\Documents\\GitHub\\Free_Course_For_Student\\EXE_PROJECT.csproj": {
+    "D:\\EXE_PROJECT\\Free_Course_For_Student\\EXE_PROJECT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Van-Khoi\\Documents\\GitHub\\Free_Course_For_Student\\EXE_PROJECT.csproj",
+        "projectUniqueName": "D:\\EXE_PROJECT\\Free_Course_For_Student\\EXE_PROJECT.csproj",
         "projectName": "EXE_PROJECT",
-        "projectPath": "C:\\Users\\Van-Khoi\\Documents\\GitHub\\Free_Course_For_Student\\EXE_PROJECT.csproj",
-        "packagesPath": "C:\\Users\\Van-Khoi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Van-Khoi\\Documents\\GitHub\\Free_Course_For_Student\\obj\\",
+        "projectPath": "D:\\EXE_PROJECT\\Free_Course_For_Student\\EXE_PROJECT.csproj",
+        "packagesPath": "C:\\Users\\khoil\\.nuget\\packages\\",
+        "outputPath": "D:\\EXE_PROJECT\\Free_Course_For_Student\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Van-Khoi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\khoil\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

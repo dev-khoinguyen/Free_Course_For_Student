@@ -64,7 +64,6 @@ D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\EXE_PROJECT.TagHelpers.i
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\EXE_PROJECT.TagHelpers.output.cache
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\EXE_PROJECT.RazorCoreGenerate.cache
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Shared\_homepage-layout.cshtml.g.cs
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -135,3 +134,8 @@ C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\Razo
 C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\Certification.cshtml.g.cs
 C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\TrainingIndustry.cshtml.g.cs
 C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\LeaningMaterials.cshtml.g.cs
+D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\Certification.cshtml.g.cs
+D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
+D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\LeaningMaterials.cshtml.g.cs
+D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\TrainingIndustry.cshtml.g.cs
+D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\News.cshtml.g.cs
