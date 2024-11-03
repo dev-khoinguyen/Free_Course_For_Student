@@ -139,3 +139,4 @@ D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\Contact
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\LeaningMaterials.cshtml.g.cs
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\TrainingIndustry.cshtml.g.cs
 D:\EXE_PROJECT\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\News.cshtml.g.cs
+C:\Users\Van-Khoi\Documents\GitHub\Free_Course_For_Student\obj\Debug\net5.0\Razor\Views\Home\News.cshtml.g.cs
