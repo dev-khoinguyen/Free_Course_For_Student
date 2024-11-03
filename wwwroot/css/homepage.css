@@ -341,12 +341,23 @@
 }
 
 .owl-style .item {
-  background-image: url(/images/background.png);
-  min-height: 579px;
+  min-height: 769px;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.item-image-1 {
+  background-image: url(/images/background.png);
+}
+
+.item-image-2 {
+  background-image: url(/images/background-2.png);
+}
+
+.item-image-3 {
+  background-image: url(/images/background-3.png);
 }
 
 
