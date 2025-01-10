@@ -406,3 +406,7 @@ obj/EXE_PROJECT.csproj.nuget.dgspec.json
 obj/EXE_PROJECT.csproj.nuget.g.props
 obj/project.assets.json
 obj/project.nuget.cache
+EXE_PROJECT.csproj
+obj/EXE_PROJECT.csproj.nuget.dgspec.json
+obj/project.assets.json
+obj/project.nuget.cache
