@@ -398,3 +398,11 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+obj/Debug/net5.0/EXE_PROJECT.AssemblyInfo.cs
+obj/Debug/net5.0/EXE_PROJECT.AssemblyInfoInputs.cache
+obj/Debug/net5.0/EXE_PROJECT.assets.cache
+obj/Debug/net5.0/EXE_PROJECT.GeneratedMSBuildEditorConfig.editorconfig
+obj/EXE_PROJECT.csproj.nuget.dgspec.json
+obj/EXE_PROJECT.csproj.nuget.g.props
+obj/project.assets.json
+obj/project.nuget.cache
