@@ -10,13 +10,13 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ProvideApplicationPartFactoryAttribute(("Microsoft.AspNetCore.Mvc.ApplicationParts.CompiledRazorAssemblyApplicationPartFac" +
-    "tory, Microsoft.AspNetCore.Mvc.Razor"))]
+[assembly: Microsoft.AspNetCore.Mvc.ApplicationParts.ProvideApplicationPartFactoryAttribute("Microsoft.AspNetCore.Mvc.ApplicationParts.CompiledRazorAssemblyApplicationPartFac" +
+    "tory, Microsoft.AspNetCore.Mvc.Razor")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("EXE_PROJECT")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyProductAttribute("EXE_PROJECT")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ceeb1d4806c6ddd421c0decbc4d28380a849ce13")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91e5088b35828e24ce21389470f9c00a58c08375")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EXE_PROJECT.Views")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
