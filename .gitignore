@@ -1,5 +1,5 @@
-# Visual Studio Specific
-.vs/
+# VS Code specific files
+.vscode/
 
 # User-specific files
 *.rsuser
@@ -8,45 +8,32 @@
 *.userosscache
 *.sln.docstates
 
-# ASP.NET Core & .NET Files
-bin/
-obj/
+# Node.js dependencies
+node_modules/
 
 # Build Directories
-**/bin/
-**/obj/
-**/out/
-
-# Rider / JetBrains IDE
-.idea/
-*.sln.iml
+bin/
+obj/
 
 # Logs & Debugging
 *.log
 Logs/
+
+# .NET SDK User Folders
+~/.dotnet/store/
+~/.nuget/packages/
+
+# Publish Output
+publish/
 
 # Environment & Secrets
 .env
 appsettings.Development.json
 secrets.json
 
-# Publish Output
-publish/
-
-# Dependency Cache
-packages/
-
-# Miscellaneous
-Thumbs.db
+# Temporary files
 *.bak
 *.swp
 
-# .NET SDK User Folders
-~/.dotnet/store/
-~/.nuget/packages/
-
-# Ignore Razor auto-generated files
-obj/**/*.cshtml.g.*
-
-# Ignore files with absolute paths
-**/path/to/file-or-folder
+# Thumbs.db - Windows specific
+Thumbs.db
