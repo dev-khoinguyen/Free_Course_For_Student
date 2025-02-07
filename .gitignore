@@ -40,3 +40,7 @@ packages/
 Thumbs.db
 *.bak
 *.swp
+
+# .NET SDK User Folders
+C:/Users/*/.dotnet/store/
+C:/Users/*/.nuget/packages/
