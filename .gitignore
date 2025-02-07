@@ -42,5 +42,11 @@ Thumbs.db
 *.swp
 
 # .NET SDK User Folders
-C:/Users/*
-C:/Users/*
+~/.dotnet/store/
+~/.nuget/packages/
+
+# Ignore Razor auto-generated files
+obj/**/*.cshtml.g.*
+
+# Ignore files with absolute paths
+*:\**
