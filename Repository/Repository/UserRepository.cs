@@ -17,6 +17,7 @@ namespace Free_Course_For_Student.Repository.Repository
         public void AddUser(User user)
         {
             _context.Users.Add(user);
+            _context.SaveChanges();
         }
 
         public void DeleteUser(User user)
