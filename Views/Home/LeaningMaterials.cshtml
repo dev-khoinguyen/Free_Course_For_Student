@@ -2,64 +2,43 @@
     ViewData["Title"] = "LeaningMaterials";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
+@model List<EXE_PROJECT.Models.Course>
+
 <h2 class="material-title">Học liệu của tôi</h2>
 <div class="container learning-wrapper">
 
 
     <div class="slider-container">
         <div class="slider-wrapper">
-            <div class="slider-item">
-                <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="#" class="btn-learning-custom">
-                    <img src="/common/images/save_outline.png" alt="Icon" />
-                    Lưu học liệu
-                </a>
-            </div>
-            <div class="slider-item">
-                <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="#" class="btn-learning-custom">
-                    <img src="/common/images/save_outline.png" alt="Icon" />
-                    Lưu học liệu
-                </a>
-            </div>
-            <div class="slider-item">
-
-                <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="#" class="btn-learning-custom">
-                    <img src="/common/images/save_outline.png" alt="Icon" />
-                    Lưu học liệu
-                </a>
-            </div>
-            <div class="slider-item">
-
-                <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="#" class="btn-learning-custom">
-                    <img src="/common/images/save_outline.png" alt="Icon" />
-                    Lưu học liệu
-                </a>
-            </div>
-            <div class="slider-item">
-
-                <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="#" class="btn-learning-custom">
-                    <img src="/common/images/save_outline.png" alt="Icon" />
-                    Lưu học liệu
-                </a>
-            </div>
-            <div class="slider-item">
-
-                <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <a href="#" class="btn-learning-custom">
-                    <img src="/common/images/save_outline.png" alt="Icon" />
-                    Lưu học liệu
-                </a>
-            </div>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var course in Model)
+                {
+                    <div class="slider-item">
+                        <a href="@course.LinkDoc" text-decoration="none">
+                            <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
+                                alt="Course Image">
+                            <p>@course.Description</p>
+                        </a>
+                        <a href="#" class="btn-learning-custom">
+                            <img src="/common/images/save_outline.png" alt="Icon" />
+                            Lưu học liệu
+                        </a>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="slider-item">
+                    <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
+                        alt="Placeholder Image">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="#" class="btn-learning-custom">
+                        <img src="/common/images/save_outline.png" alt="Icon" />
+                        Lưu học liệu
+                    </a>
+                </div>
+            }
         </div>
 
         <div class="button-container">
@@ -169,74 +148,7 @@
     </div>
 </div>
 
-<h2 class="material-title">Các giáo trình </h2>
-<div class="slider-container">
-    <div class="slider-wrapper">
-        <div class="slider-item">
-            <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn-learning-custom">
-                <img src="/common/images/save_outline.png" alt="Icon" />
-                Lưu học liệu
-            </a>
-        </div>
-        <div class="slider-item">
-            <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn-learning-custom">
-                <img src="/common/images/save_outline.png" alt="Icon" />
-                Lưu học liệu
-            </a>
-        </div>
-        <div class="slider-item">
-
-            <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn-learning-custom">
-                <img src="/common/images/save_outline.png" alt="Icon" />
-                Lưu học liệu
-            </a>
-        </div>
-        <div class="slider-item">
-
-            <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn-learning-custom">
-                <img src="/common/images/save_outline.png" alt="Icon" />
-                Lưu học liệu
-            </a>
-        </div>
-        <div class="slider-item">
-
-            <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn-learning-custom">
-                <img src="/common/images/save_outline.png" alt="Icon" />
-                Lưu học liệu
-            </a>
-        </div>
-        <div class="slider-item">
-
-            <img src="https://via.placeholder.com/290" alt="Placeholder Image">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="#" class="btn-learning-custom">
-                <img src="/common/images/save_outline.png" alt="Icon" />
-                Lưu học liệu
-            </a>
-        </div>
-    </div>
-
-    <div class="button-container">
-        <button id="prev" class="button-learning">&lt;</button>
-        <button id="next" class="button-learning">&gt;</button>
-    </div>
-</div>
-
-
-
-
 <div class="container comment-wrapper">
-
     <h2 class="material-inside-title comment-material-title">Bình luận</h2>
     <!-- Comment Box 1 -->
     <div class="comment-box">

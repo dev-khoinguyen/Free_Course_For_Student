@@ -9,9 +9,16 @@ namespace Free_Course_For_Student.Repository.Repository
 {
     public class CourseRepository : ICourseRepository
     {
+        private readonly ELEARNINGContext _context;
+        public CourseRepository( ELEARNINGContext context)
+        {
+            _context = context;
+        }
         public void AddCourse(Course course)
         {
-            throw new NotImplementedException();
+            _context.Courses.Add(course);
+            _context.SaveChanges();
+            
         }
 
         public void DeleteCourse(Course course)
@@ -21,7 +28,7 @@ namespace Free_Course_For_Student.Repository.Repository
 
         public List<Course> GetAllCourse()
         {
-            throw new NotImplementedException();
+            return _context.Courses.ToList();
         }
 
         public Course GetCourseById(int id)

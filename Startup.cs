@@ -34,6 +34,8 @@ namespace EXE_PROJECT
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICourseRepository, CourseRepository>();
+            services.AddScoped<IUserCourseRepository, UserCourseRepository>();
 
             services.AddSession(options =>
             {

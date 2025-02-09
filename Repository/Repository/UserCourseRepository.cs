@@ -9,10 +9,24 @@ namespace Free_Course_For_Student.Repository.Repository
 {
     public class UserCourseRepository : IUserCourseRepository
     {
-        public void AddUserCourse(UserCourse userCourse)
+        private readonly ELEARNINGContext _context;
+        public UserCourseRepository(ELEARNINGContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
+        public void AddUserCourse(int userId, int courseId)
+        {
+            var userCourse = new UserCourse
+            {
+                UserId = userId,
+                CourseId = courseId,
+                EnrolledAt = DateTime.UtcNow // Lưu thời gian đăng ký (tùy chọn)
+            };
+
+            _context.UserCourses.Add(userCourse);
+            _context.SaveChanges();
+        }
+
 
         public void DeleteUserCourse(UserCourse userCourse)
         {

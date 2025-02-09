@@ -8,7 +8,7 @@ namespace Free_Course_For_Student.Repository.Interface
 {
     public interface IUserCourseRepository
     {
-        public void AddUserCourse(UserCourse userCourse);
+        public void AddUserCourse(int userId, int courseId);
         public void DeleteUserCourse(UserCourse userCourse);
         public void UpdateUserCourse(UserCourse userCourse);
         public List<UserCourse> GetAllUserCourse();

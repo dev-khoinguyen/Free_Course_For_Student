@@ -15,11 +15,13 @@ namespace EXE_PROJECT.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUserRepository _userRepository;
+        private readonly ICourseRepository _courseRepository;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository)
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
+            _courseRepository = courseRepository;
         }
 
         public IActionResult Index()
@@ -42,7 +44,8 @@ namespace EXE_PROJECT.Controllers
         }
         public IActionResult LeaningMaterials()
         {
-            return View();
+            var course = _courseRepository.GetAllCourse();
+            return View(course);
         }
         public IActionResult News()
         {
