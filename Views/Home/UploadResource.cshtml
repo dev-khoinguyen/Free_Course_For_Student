@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "UploadResource";
+    Layout = "/Views/Shared/_homepage-layout.cshtml";
+}
+<div class="container-upload">
+    <div class="text-center">
+        <span class="material-icons icon-upload d-block mx-auto">cloud_upload</span>
+        <button class="btn button-upload d-block mx-auto">Tải lên học liệu</button>
+        <p class="text-muted text-muted-upload">Hỗ trợ file: pdf, doc, docx...</p>
+    </div>
+    <div class="d-flex justify-content-between mt-4">
+        <div class="step-upload">
+            <p class="step-active-upload">Tải lên</p>
+            <div class="line-upload step-active-upload"></div>
+        </div>
+        <div class="step-upload">
+            <p class="step-inactive-upload">Chi tiết</p>
+            <div class="line-upload step-inactive-upload"></div>
+        </div>
+        <div class="step-upload">
+            <p class="step-inactive-upload">Hoàn thành</p>
+            <div class="line-upload step-inactive-upload"></div>
+        </div>
+    </div>
+</div>
