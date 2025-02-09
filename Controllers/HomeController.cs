@@ -48,16 +48,38 @@ namespace EXE_PROJECT.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
-        public IActionResult Register()
+        public IActionResult Information()
         {
             return View();
         }
 
-        public IActionResult Information()
+        [HttpPost]
+        public IActionResult Login(string username, string password)
+        {
+            var user = _userRepository.Login(username, password);
+
+            if (user != null)
+            {
+                // Lưu thông tin user vào session
+                HttpContext.Session.SetString("UserName", user.Username);
+                HttpContext.Session.SetInt32("UserId", user.Id);
+
+                return RedirectToAction("Index", "Home"); // Chuyển hướng sau khi đăng nhập thành công
+            }
+            else
+            {
+                ViewBag.ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng.";
+                return RedirectToAction("Login", "Home");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult Register()
         {
             return View();
         }
