@@ -1814,6 +1814,7 @@ h2 {
   align-items: center;
   justify-content: center;
 }
+
 .-login-card {
   background-color: white;
   padding: 2rem;
@@ -1822,23 +1823,28 @@ h2 {
   width: 100%;
   max-width: 600px;
 }
+
 .-login-title {
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
 }
+
 .-login-input-group {
   margin-bottom: 1rem;
 }
+
 .-login-input-group input {
   border: none;
   background-color: #E5E7EB;
 }
+
 .-login-input-group .input-group-text {
   background-color: #E5E7EB;
   border: none;
 }
+
 .-login-button {
   background-color: var(--primary-color);
   color: white;
@@ -1847,9 +1853,11 @@ h2 {
   border: none;
   border-radius: 0.25rem;
 }
+
 .-login-button:hover {
   background-color: var(--primary-color);
 }
+
 /*--------------------- register page------------------- */
 .regis-bg-blue {
   margin-top: 50px;
@@ -1859,6 +1867,7 @@ h2 {
   align-items: center;
   justify-content: center;
 }
+
 .regis-container {
   width: 90%;
   max-width: 800px;
@@ -1869,6 +1878,7 @@ h2 {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   position: relative;
 }
+
 .regis-title {
   font-size: 1.5rem;
   font-weight: bold;
@@ -1876,15 +1886,18 @@ h2 {
   color: black;
   margin-bottom: 1.5rem;
 }
+
 .regis-input {
   margin-bottom: 1rem;
 }
+
 .regis-input input {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
 }
+
 .regis-button {
   background-color: var(--primary-color);
   color: white;
@@ -1892,6 +1905,64 @@ h2 {
   border: none;
   border-radius: 0.25rem;
 }
+
 .regis-button:hover {
-  background-color:var(--primary-color);
+  background-color: var(--primary-color);
+}
+
+/*--------------------- information page------------------- */
+
+.information-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+.information-card {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+}
+.information-tab {
+  border-bottom: 2px solid #e9ecef;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.information-tab button {
+  color: #007bff;
+  font-weight: bold;
+  border: none;
+  background: none;
+  border-bottom: 2px solid #007bff;
+}
+.information-profile-pic {
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+.information-edit-btn {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+.information-section-title {
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.information-update-btn {
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.form-group {
+  flex: 1;
+  min-width: 200px;
 }
