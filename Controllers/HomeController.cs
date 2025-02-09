@@ -40,15 +40,20 @@ namespace EXE_PROJECT.Controllers
         {
             return View();
         }
-         public IActionResult News()
+        public IActionResult News()
         {
             return View();
         }
-         public IActionResult Login()
+        public IActionResult Login()
         {
             return View();
         }
-         public IActionResult Register()
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        public IActionResult Information()
         {
             return View();
         }
