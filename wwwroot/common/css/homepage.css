@@ -1763,7 +1763,13 @@ h2 {
   width: 100%;
   height: 200px;
   background-color: var(--gray-color);
+  
+}
+.image-news-second-1{
   background-image: url(/common/images/news-9.jpg);
+}
+.image-news-second-2{
+  background-image: url(/common/images/news-14.jpg);
 }
 
 .content-news-second {
