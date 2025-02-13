@@ -2,13 +2,18 @@
 
 @if (!string.IsNullOrEmpty(Model))
 {
-    <div class="profile-icon">
-        <a href="/home/information">
-            <img src="/common/images/profile_icon.png" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;">
+    <div class="profile-icon d-flex align-items-center">
+        <a class="profile-img-link" asp-controller="Home" asp-action="Information">
+            <span class="profile-name">
+                <i class="material-icons profile-icon-google">person</i> Xin chào, @Model!
+            </span>
         </a>
-        <span>Xin chào, @Model!</span>
-        <a href="/home/logout" class="btn btn-danger btn-sm">Đăng xuất</a>
+        <a href="/home/logout" class="btn btn-danger btn-sm logout-btn">
+            <i class="material-icons">logout</i> Đăng xuất
+        </a>
     </div>
+
+
 }
 else
 {
