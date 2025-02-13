@@ -5,21 +5,25 @@
 <div class="container-upload">
     <div class="text-center">
         <span class="material-icons icon-upload d-block mx-auto">cloud_upload</span>
-        <button class="btn button-upload d-block mx-auto">Tải lên học liệu</button>
-        <p class="text-muted text-muted-upload">Hỗ trợ file: pdf, doc, docx...</p>
     </div>
-    <div class="d-flex justify-content-between mt-4">
-        <div class="step-upload">
-            <p class="step-active-upload">Tải lên</p>
-            <div class="line-upload step-active-upload"></div>
-        </div>
-        <div class="step-upload">
-            <p class="step-inactive-upload">Chi tiết</p>
-            <div class="line-upload step-inactive-upload"></div>
-        </div>
-        <div class="step-upload">
-            <p class="step-inactive-upload">Hoàn thành</p>
-            <div class="line-upload step-inactive-upload"></div>
-        </div>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Thêm Khóa Học</h2>
+        <form>
+            <div class="mb-4">
+                <label for="title" class="form-label">Tiêu đề</label>
+                <input type="text" class="form-control" id="title" placeholder="Nhập tiêu đề khóa học" required>
+            </div>
+            <div class="mb-4">
+                <label for="description" class="form-label">Mô tả</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Nhập mô tả khóa học"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="link_doc" class="form-label">Link Tài Liệu</label>
+                <input type="url" class="form-control" id="link_doc" placeholder="Nhập link tài liệu">
+            </div>
+            <button type="submit" class="btn btn-primary">Thêm Khóa Học</button>
+        </form>
     </div>
 </div>
