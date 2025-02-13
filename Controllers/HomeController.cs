@@ -58,8 +58,25 @@ namespace EXE_PROJECT.Controllers
         }
         public IActionResult Information()
         {
-            return View();
+            // Kiểm tra session có tồn tại không
+            int? userId = HttpContext.Session.GetInt32("UserId");
+
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
+            }
+
+            // Lấy thông tin User từ database
+            var user = _userRepository.GetUserById(userId.Value);
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Home"); // Nếu không tìm thấy user, yêu cầu đăng nhập lại
+            }
+
+            return View(user); // Truyền user vào View để hiển thị
         }
+
 
         [HttpPost]
         public IActionResult Login(string username, string password)
@@ -103,9 +120,22 @@ namespace EXE_PROJECT.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpGet]
         public IActionResult UploadResource()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult UploadResource(Course model)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return View(model); // Trả lại form nếu có lỗi
+            }
+            _courseRepository.AddCourse(model); // Thêm trực tiếp vào DB
+            return RedirectToAction("Login", "Home"); // Hiển thị thông báo đơn giản
         }
 
         public IActionResult Logout()

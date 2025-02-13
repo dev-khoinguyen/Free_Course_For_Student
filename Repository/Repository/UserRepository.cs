@@ -32,8 +32,9 @@ namespace Free_Course_For_Student.Repository.Repository
 
         public User GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Users.FirstOrDefault(u => u.Id == id);
         }
+
 
         public User Login(string username, string password)
         {

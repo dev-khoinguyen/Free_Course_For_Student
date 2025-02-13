@@ -1,3 +1,4 @@
+@model EXE_PROJECT.Models.User
 @{
     ViewData["Title"] = "Information";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
@@ -34,19 +35,19 @@
                     <label for="information-name">
                         Họ và tên
                     </label>
-                    <input class="form-control" id="information-name" type="text" value="Nguyễn Thanh Nhàn" />
+                    <input readonly class="form-control" id="information-name" type="text" value="@Model.Username" />
                 </div>
                 <div class="form-group">
                     <label for="information-phone">
                         Số điện thoại
                     </label>
-                    <input class="form-control" id="information-phone" type="text" value="xxxxxxxxx" />
+                    <input readonly class="form-control" id="information-phone" type="text" value="xxxxxxxxx" />
                 </div>
                 <div class="form-group">
                     <label for="information-email">
                         Địa chỉ email
                     </label>
-                    <input class="form-control" id="information-email" type="email" value="ng........" />
+                    <input readonly class="form-control" id="information-email" type="email" value="@Model.Email" />
                 </div>
                 <div class="form-group">
                     <label for="information-gender">
@@ -68,13 +69,13 @@
                     <label for="information-dob">
                         Ngày sinh
                     </label>
-                    <input class="form-control" id="information-dob" placeholder="dd/mm/yyyy" type="text" />
+                    <input readonly class="form-control" id="information-dob" placeholder="dd/mm/yyyy" type="text" />
                 </div>
                 <div class="form-group">
                     <label for="information-address">
                         Địa chỉ chi tiết
                     </label>
-                    <input class="form-control" id="information-address" type="text" value="Mỹ Xuyên, Sóc Trăng" />
+                    <input readonly class="form-control" id="information-address" type="text" value="Mỹ Xuyên, Sóc Trăng" />
                 </div>
             </div>
             <div class="text-right">
