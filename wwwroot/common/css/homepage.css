@@ -2007,7 +2007,7 @@ h2 {
   border-radius: 0.25rem;
   margin-bottom: 1rem;
   font-size: 1.25rem;
-  margin-left: 15%;
+  margin-left: 11%;
 }
 
 .text-muted-upload {
@@ -2093,3 +2093,4 @@ h2 {
 .logout-btn:hover {
   background: #c82333;
 }
+
