@@ -1,0 +1,21 @@
+@model string
+
+@if (!string.IsNullOrEmpty(Model))
+{
+    <div class="profile-icon">
+        <a href="/home/information">
+            <img src="/common/images/profile_icon.png" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;">
+        </a>
+        <span>Xin chào, @Model!</span>
+        <a href="/home/logout" class="btn btn-danger btn-sm">Đăng xuất</a>
+    </div>
+}
+else
+{
+    <div class="top-decorations">
+        <div class="decoration-line"></div>
+        <a class="" asp-controller="Home" asp-action="Login">Đăng nhập</a>
+        <div class="decoration-line"></div>
+        <a class="" asp-controller="Home" asp-action="Register">Đăng kí</a>
+    </div>
+}

@@ -16,12 +16,7 @@
 
 
   <section class="header-section">
-    <div class="top-decorations">
-      <div class="decoration-line"></div>
-      <a class="" asp-controller="Home" asp-action="Login">Đăng nhập</a>
-      <div class="decoration-line"></div>
-      <a class="" asp-controller="Home" asp-action="Register">Đăng kí</a>
-    </div>
+   @await Component.InvokeAsync("LoginStatus")
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid wrap-navbar">

@@ -108,5 +108,11 @@ namespace EXE_PROJECT.Controllers
             return View();
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // Xóa toàn bộ session
+            return RedirectToAction("Login", "Home"); // Chuyển về trang đăng nhập
+        }
+
     }
 }
