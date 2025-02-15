@@ -366,107 +366,56 @@
 
 /* -------------------footer section ---------------- */
 
-
 .footer-content {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0.5) 50%), url(/common/images/footer-background.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   max-width: 100%;
-  height: 577px;
 }
 
-.contact-column {
-  padding-left: 10%;
-  margin-top: 5%;
-  text-align: left;
-
-}
-
-.products-column {
-  margin-top: 5%;
-  text-align: left;
-}
-
-.newsletter-column {
-  margin-top: 5%;
-  text-align: left;
-  padding-right: 5%;
-}
-
-.contact-column p {
+.contact-info p {
   color: var(--secondary-color);
   font-weight: 600;
-  font-size: 20px;
-}
-
-
-
-.footer-columns {
-  display: flex;
+  font-size: 18px;
 }
 
 .title-footer {
   font-family: Roboto Flex, sans-serif;
   font-weight: bold;
   color: var(--secondary-color);
-  font-size: 40px;
-
+  font-size: 32px;
 }
 
 .registration-container {
   border-radius: 8px;
   background-color: lightblue;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-  display: flex;
-  margin-top: 31px;
-  flex-direction: column;
-  align-items: flex-end;
-  font-size: 24px;
-  padding: 0 0px;
-  width: 423.59px;
-
+  width: 100%;
 }
 
 .registration-button {
-  border-radius: 0 8px 8px 0;
+  border-radius: 8px;
   background-color: var(--button-footer-color);
-  padding: 10px 28px;
+  padding: 10px 20px;
   color: var(--secondary-color);
   font: 600 15px Roboto Flex, sans-serif;
+  width: 100%;
 }
 
 .logo-footer {
   background-image: url(/common/images/footer-logo.png);
   background-repeat: no-repeat;
-  background-size: cover;
-  width: 215px;
-  max-width: 100%;
-  height: 199px;
-  float: right;
+  background-size: contain;
+  width: 100%;
+  height: 100px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .copyright {
-  position: relative;
   background-color: var(--content-color);
-  z-index: 10;
   color: var(--secondary-color);
-
-  padding: 19px 80px;
-  font: 600 15px Roboto Flex, sans-serif;
-  text-align: center;
+  padding: 15px;
+  font: 600 14px Roboto Flex, sans-serif;
 }
 
 
