@@ -441,142 +441,20 @@
 }
 
 /* --------------nganh dao tao--------------------- */
-.training-programs {
-  display: flex;
-  flex-direction: column;
-  font-family: Roboto Flex, sans-serif;
-  margin: 256px 69px;
-}
-
-.content-wrapper {
-  width: 100%;
-  display: flex;
-  gap: 10px;
-}
-
-
-.info-column {
-  display: flex;
-  flex-direction: column;
-  width: 37%;
-  margin-left: 0;
-}
-
-
-.info-content {
-  display: flex;
-  flex-direction: column;
-  margin: auto 0;
-}
-
-
-
-
-.training-programs p {
-  color: var(--content-color);
-  width: 100%;
-  font-size: 14px;
-  font-weight: 500;
-  margin-top: 25px;
-  text-align: left;
-  font: 600 14px Roboto Flex, sans-serif;
-}
-
-
-.programs-column {
-  display: flex;
-  flex-direction: column;
-  width: 63%;
-  margin-left: 20px;
-}
-
-.programs-wrapper {
-  flex-grow: 1;
-  display: flex;
-  gap: 20px;
-}
-
 .program-item {
+  height: 350px;
   display: flex;
-  flex-direction: column;
-  width: 33%;
-  margin-left: 0;
+  align-items: flex-end;
+  justify-content: center;
 }
-
-.program-item-1 {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(102, 102, 102, 0) 47%), url(/common/images/nganhdaotao-3.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.program-item-2 {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(102, 102, 102, 0) 47%), url(/common/images/nganhdaotao-2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.program-item-3 {
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(102, 102, 102, 0) 47%), url(/common/images/nganhdaotao-1.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 
 .program-title {
-  color: var(--secondary-color);
-  font-size: 30px;
-  font-weight: 700;
-  padding: 408px 70px 18px;
-  flex-grow: 1;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-
-
-.kdqt {
-  margin-right: -140px;
-}
-
-.tkdh {
-  margin-right: -188px;
-  padding-bottom: 21px;
-}
-
-.ktpm {
-  padding-bottom: 23px;
-}
-
-.navigation-dots {
-  align-self: flex-end;
-  display: flex;
-  gap: 24px;
-  margin: 23px 338px 0 0;
-}
-
-
-.dot {
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
-}
-
-.dot-active {
-  background-color: var(--title-color);
-}
-
-.dot-inactive {
-  background-color: var(--ligt-blue-color);
-}
-
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+.training-programs {
+  margin: 200px 0px;
 }
 
 /* ----------------tin tuc ----------------- */
@@ -728,92 +606,57 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 1440px;
-  max-width: 100%;
-  height: 569px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 110px;
-  margin-bottom: 100px;
+  width: 100%;
+  height: auto;
+  padding: 50px 0;
+  margin: 200px 0px;
 }
 
-.col-economic {
-  margin-top: 50px;
-  background-color: var(--secondary-color);
-  width: 392px;
-  max-width: 100%;
-  height: 454px;
-}
-
-.col-design {
-  margin-top: 50px;
-  background-color: var(--secondary-color);
-  width: 392px;
-  max-width: 100%;
-  height: 454px;
-}
-
+.col-economic,
+.col-design,
 .col-it {
-  margin-top: 50px;
   background-color: var(--secondary-color);
-  width: 392px;
-  max-width: 100%;
-  height: 454px;
+  width: 100%;
+  max-width: 392px;
+  height: auto;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.economic-img,
+.design-img,
+.it-img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 198px;
+  height: 198px;
 }
 
 .economic-img {
   background-image: url(/common/images/economic.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 198px;
-  height: 198px;
-  max-width: 100%;
-  margin: 0 auto;
-  margin-top: 20%;
 }
 
 .design-img {
   background-image: url(/common/images/design.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 198px;
-  height: 198px;
-  max-width: 100%;
-  margin: 0 auto;
-  margin-top: 20%;
 }
 
 .it-img {
   background-image: url(/common/images/it.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 198px;
-  height: 198px;
-  max-width: 100%;
-  margin: 0 auto;
-  margin-top: 20%;
 }
 
-
 .knowledge a {
+  display: inline-block;
   text-align: center;
   text-decoration: none;
   color: var(--secondary-color);
   border: 1px solid var(--primary-color);
-  border-radius: 2px;
+  border-radius: 4px;
   background-color: var(--primary-color);
   transition: background-color 0.3s, color 0.3s;
-  padding: 2px 6px;
+  padding: 8px 16px;
 }
 
-.link-knowledge {
-  margin-top: 35%;
-  text-align: center;
-}
 
 /*------------------------------------------- contact page------------------------------------------------ */
 .contact {
@@ -2042,4 +1885,3 @@ h2 {
 .logout-btn:hover {
   background: #c82333;
 }
-

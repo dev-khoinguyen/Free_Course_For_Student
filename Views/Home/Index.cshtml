@@ -28,40 +28,54 @@
     một nền tảng học tập dễ tiếp cận và phù hợp với nhu cầu của học sinh nông thôn
   </div>
 </section>
-<!-- ngành đào tạo section  -->
-<section class="training-programs">
-  <div class="container content-wrapper">
-    <div class="info-column ">
-      <div class="info-content">
-        <h2 class="section-title">NGÀNH ĐÀO TẠO</h2>
-        <p class="section-description">
-          Chúng tôi cung cấp các khóa học đào tạo khởi nghiệp trong các lĩnh vực quan trọng, bao gồm các chuyên ngành như: Kỹ Thuật Phần Mềm,
-          Thiết kế Đồ họa và Kinh doanh Quốc tế. Các khóa học của chúng tôi được thiết kế nhằm trang bị cho học viên
-          những kỹ năng và kiến thức cần thiết để bắt đầu một sự nghiệp thành công, cũng như tạo ra các cơ hội phát
-          triển nghề nghiệp trong môi trường toàn cầu hóa. Mỗi ngành học đều mang lại những giá trị thực tiễn cao, giúp
-          học viên có thể áp dụng ngay vào công việc hoặc các dự án khởi nghiệp của mình.
-        </p>
+
+
+<section class="training-programs py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Thông tin -->
+      <div class="col-md-5 d-flex align-items-center">
+        <div class="info-content">
+          <h2 class="section-title">NGÀNH ĐÀO TẠO</h2>
+          <p class="section-description">
+            Chúng tôi cung cấp các khóa học đào tạo khởi nghiệp trong các lĩnh vực quan trọng, bao gồm: Kỹ Thuật Phần
+            Mềm, Thiết kế Đồ họa và Kinh doanh Quốc tế.
+          </p>
+        </div>
+      </div>
+
+      <!-- Chương trình -->
+      <div class="col-md-7">
+        <div class="row g-3">
+          <div class="col-12 col-sm-4">
+            <div class="program-item text-center p-4"
+              style="background: url('/common/images/nganhdaotao-3.png') center/cover;">
+              <h3 class="program-title text-light">KDQT</h3>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="program-item text-center p-4"
+              style="background: url('/common/images/nganhdaotao-2.png') center/cover;">
+              <h3 class="program-title text-light">TKĐH</h3>
+            </div>
+          </div>
+          <div class="col-12 col-sm-4">
+            <div class="program-item text-center p-4"
+              style="background: url('/common/images/nganhdaotao-1.png') center/cover;">
+              <h3 class="program-title text-light">KTPM</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="programs-column">
-      <div class="programs-wrapper">
-        <div class="program-item program-item-1">
-          <h3 class="program-title kdqt">KDQT</h3>
-        </div>
-        <div class="program-item program-item-2">
-          <h3 class="program-title tkdh">TKĐH</h3>
-        </div>
-        <div class="program-item program-item-3">
-          <h3 class="program-title ktpm">KTPM</h3>
-        </div>
-      </div>
+
+    <!-- Navigation dots -->
+    <div class="text-center mt-4">
+      <span class="dot bg-primary rounded-circle d-inline-block mx-1" style="width: 12px; height: 12px;"></span>
+      <span class="dot bg-secondary rounded-circle d-inline-block mx-1" style="width: 12px; height: 12px;"></span>
+      <span class="dot bg-secondary rounded-circle d-inline-block mx-1" style="width: 12px; height: 12px;"></span>
     </div>
   </div>
-  <nav class="navigation-dots" aria-label="Program navigation">
-    <span class="dot dot-active" tabindex="0" role="button" aria-label="Current program"></span>
-    <span class="dot dot-inactive" tabindex="0" role="button" aria-label="Next program"></span>
-    <span class="dot dot-inactive" tabindex="0" role="button" aria-label="Last program"></span>
-  </nav>
 </section>
 
 <!---------- tin tuc ------------- -->
@@ -96,7 +110,7 @@
             </div>
           </div>
         </div>
-        <a href="#" class="cta-button" role="button">Xem chi tiết</a>
+        <a asp-controller="Home" asp-action="News" class="cta-button" role="button">Xem chi tiết</a>
       </article>
     </div>
 
@@ -200,20 +214,27 @@
 </button>
 </div>
 <!---------- tri thuc ------------- -->
-<h2 class="section-title">TRI THỨC</h2>
+<h2 class="section-title text-center">TRI THỨC</h2>
 <div class="container-fluid knowledge">
-  <div class="col-economic">
-    <div class="economic-img"></div>
-    <div class="link-knowledge"><a href="#">Xem chi tiết</a></div>
-
-  </div>
-  <div class=" col-design">
-    <div class="design-img"></div>
-    <div class="link-knowledge"><a href="#">Xem chi tiết</a></div>
-  </div>
-  <div class="col-it">
-    <div class="it-img"></div>
-    <div class="link-knowledge"><a href="#">Xem chi tiết</a></div>
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-12 mb-4">
+      <div class="col-economic text-center p-3">
+        <div class="economic-img mx-auto"></div>
+        <div class="link-knowledge mt-3"><a href="#">Xem chi tiết</a></div>
+      </div>
+    </div>
+    <div class="col-md-4 col-12 mb-4">
+      <div class="col-design text-center p-3">
+        <div class="design-img mx-auto"></div>
+        <div class="link-knowledge mt-3"><a href="#">Xem chi tiết</a></div>
+      </div>
+    </div>
+    <div class="col-md-4 col-12 mb-4">
+      <div class="col-it text-center p-3">
+        <div class="it-img mx-auto"></div>
+        <div class="link-knowledge mt-3"><a href="#">Xem chi tiết</a></div>
+      </div>
+    </div>
   </div>
 </div>
 <!---------- thanh vien ------------- -->
