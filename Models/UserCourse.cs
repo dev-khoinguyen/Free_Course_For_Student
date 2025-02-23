@@ -13,6 +13,10 @@ public partial class UserCourse
 
     public DateTime? EnrolledAt { get; set; }
 
+    public int? AllModule { get; set; }
+
+    public int? FinishedModule { get; set; }
+
     public virtual Course Course { get; set; }
 
     public virtual User User { get; set; }

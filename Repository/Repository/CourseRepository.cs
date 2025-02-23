@@ -9,8 +9,8 @@ namespace Free_Course_For_Student.Repository.Repository
 {
     public class CourseRepository : ICourseRepository
     {
-        private readonly ELEARNINGContext _context;
-        public CourseRepository( ELEARNINGContext context)
+        private readonly ElearningContext _context;
+        public CourseRepository( ElearningContext context)
         {
             _context = context;
         }
@@ -33,7 +33,7 @@ namespace Free_Course_For_Student.Repository.Repository
 
         public Course GetCourseById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Courses.FirstOrDefault(c => c.Id == id);
         }
 
         public int GetCourseCount()

@@ -17,6 +17,8 @@ public partial class Submission
 
     public DateTime? SubmittedAt { get; set; }
 
+    public string Status { get; set; }
+
     public virtual Module Module { get; set; }
 
     public virtual User User { get; set; }

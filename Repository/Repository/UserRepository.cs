@@ -9,8 +9,8 @@ namespace Free_Course_For_Student.Repository.Repository
 {
     public class UserRepository : IUserRepository
     {
-        private readonly ELEARNINGContext _context;
-        public UserRepository(ELEARNINGContext context)
+        private readonly ElearningContext _context;
+        public UserRepository(ElearningContext context)
         {
             _context = context;
         }

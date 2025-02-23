@@ -13,9 +13,15 @@ public partial class Module
 
     public int Position { get; set; }
 
-    public virtual Course Course { get; set; }
+    public string DocUrl { get; set; }
 
-    public virtual ICollection<Section> Sections { get; set; } = new List<Section>();
+    public string VideoUrl { get; set; }
+
+    public string Description { get; set; }
+
+    public bool? IsFinished { get; set; }
+
+    public virtual Course Course { get; set; }
 
     public virtual ICollection<Submission> Submissions { get; set; } = new List<Submission>();
 }

@@ -19,7 +19,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSession();
 
 // Đăng ký DbContext vào DI container
-builder.Services.AddDbContext<ELEARNINGContext>(options =>
+builder.Services.AddDbContext<ElearningContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Đăng ký Repository (DI)

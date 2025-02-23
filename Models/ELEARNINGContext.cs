@@ -23,8 +23,6 @@ public partial class ElearningContext : DbContext
 
     public virtual DbSet<News> News { get; set; }
 
-    public virtual DbSet<Section> Sections { get; set; }
-
     public virtual DbSet<Submission> Submissions { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -89,9 +87,18 @@ public partial class ElearningContext : DbContext
 
             entity.Property(e => e.ModuleId).HasColumnName("ModuleID");
             entity.Property(e => e.CourseId).HasColumnName("CourseID");
+            entity.Property(e => e.DocUrl)
+                .HasMaxLength(500)
+                .HasColumnName("DocURL");
+            entity.Property(e => e.IsFinished)
+                .HasDefaultValue(false)
+                .HasColumnName("isFinished");
             entity.Property(e => e.Title)
                 .IsRequired()
                 .HasMaxLength(255);
+            entity.Property(e => e.VideoUrl)
+                .HasMaxLength(500)
+                .HasColumnName("VideoURL");
 
             entity.HasOne(d => d.Course).WithMany(p => p.Modules)
                 .HasForeignKey(d => d.CourseId)
@@ -120,30 +127,6 @@ public partial class ElearningContext : DbContext
                 .HasColumnName("title");
         });
 
-        modelBuilder.Entity<Section>(entity =>
-        {
-            entity.HasKey(e => e.SectionId).HasName("PK__Sections__80EF0892D1BE862B");
-
-            entity.Property(e => e.SectionId).HasColumnName("SectionID");
-            entity.Property(e => e.DocUrl)
-                .HasMaxLength(500)
-                .HasColumnName("DocURL");
-            entity.Property(e => e.ModuleId).HasColumnName("ModuleID");
-            entity.Property(e => e.SubmissionUrl)
-                .HasMaxLength(500)
-                .HasColumnName("SubmissionURL");
-            entity.Property(e => e.Title)
-                .IsRequired()
-                .HasMaxLength(255);
-            entity.Property(e => e.VideoUrl)
-                .HasMaxLength(500)
-                .HasColumnName("VideoURL");
-
-            entity.HasOne(d => d.Module).WithMany(p => p.Sections)
-                .HasForeignKey(d => d.ModuleId)
-                .HasConstraintName("FK__Sections__Module__08B54D69");
-        });
-
         modelBuilder.Entity<Submission>(entity =>
         {
             entity.HasKey(e => e.SubmissionId).HasName("PK__Submissi__449EE1054474BAE3");
@@ -151,6 +134,9 @@ public partial class ElearningContext : DbContext
             entity.Property(e => e.SubmissionId).HasColumnName("SubmissionID");
             entity.Property(e => e.ModuleId).HasColumnName("ModuleID");
             entity.Property(e => e.Score).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasDefaultValue("Pending");
             entity.Property(e => e.SubmissionUrl)
                 .IsRequired()
                 .HasMaxLength(500)
@@ -212,11 +198,17 @@ public partial class ElearningContext : DbContext
             entity.ToTable("user_courses");
 
             entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.AllModule)
+                .HasDefaultValue(0)
+                .HasColumnName("allModule");
             entity.Property(e => e.CourseId).HasColumnName("course_id");
             entity.Property(e => e.EnrolledAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")
                 .HasColumnName("enrolled_at");
+            entity.Property(e => e.FinishedModule)
+                .HasDefaultValue(0)
+                .HasColumnName("finishedModule");
             entity.Property(e => e.UserId).HasColumnName("user_id");
 
             entity.HasOne(d => d.Course).WithMany(p => p.UserCourses)
