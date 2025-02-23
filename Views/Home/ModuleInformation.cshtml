@@ -5,43 +5,79 @@
 
 <!-- Facebook SDK -->
 <div id="fb-root"></div>
-<div id="video-container">
-    <div class="video-wrapper">
-        <!-- Video sẽ hiển thị ở đây -->
-    </div>
-</div>
 
+<!-- Instagram SDK -->
+<script async src="https://www.instagram.com/embed.js"></script>
+
+<div id="video-container">
+    <div class="video-wrapper"></div>
+</div>
+@* content and title  *@
 <div class="module-info">
-    <h1>Lập trình C# cơ bản/h1>
-        <p>Khóa học này giúp bạn nắm vững các khái niệm cơ bản về C#, từ cú pháp đến lập trình hướng đối tượng.</p>
+    <h1>tiêu đề video</h1>
+    <p>Nội dung videoooooooooooo</p>
 </div>
 <div class="button-group">
-    <a asp-action="AllModule" class="big-button back-button">⬅ Quay lại</a>
-    <a class="big-button submit-button">📤 Nộp bài</a>
+    <a asp-action="AllModule" class="big-button back-button">⬅ Quay lại</a>
+    <a class="big-button submit-button">📤 Nộp bài</a>
 </div>
 <style>
-    .module-info {
+    #video-container {
+        width: 100%;
         max-width: 800px;
+        height: 500px;
         margin: 20px auto;
-        padding: 20px;
-        background: white;
-        border-radius: 10px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ddd;
+        background: black;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .video-wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    .reel-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reel-container iframe {
+        width: auto;
+        height: 100%;
+        aspect-ratio: 9 / 16;
+    }
+
+    .reel-note {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 5px;
         text-align: center;
+        white-space: nowrap;
     }
 
-    .module-info h1 {
-        font-size: 28px;
-        color: #333;
-    }
-
-    .module-info p {
-        font-size: 18px;
-        color: #555;
-        line-height: 1.6;
-    }
-
-    /* Định dạng nút */
     .button-group {
         display: flex;
         flex-direction: column;
@@ -51,14 +87,15 @@
     }
 
     .big-button {
+        display: inline-block;
         width: 80%;
         max-width: 400px;
+        text-align: center;
         padding: 15px;
         font-size: 20px;
         font-weight: bold;
-        border: none;
         border-radius: 8px;
-        cursor: pointer;
+        text-decoration: none;
         transition: 0.3s;
     }
 
@@ -78,77 +115,38 @@
 
     .submit-button:hover {
         background-color: #218838;
+
     }
 
-    #video-container {
-        width: 100%;
+    .module-info {
         max-width: 800px;
-        height: 500px;
-        /* Chiều cao cố định */
         margin: 20px auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1px solid #ddd;
-        background: black;
-        /* Nền đen nếu video không fit */
-        overflow: hidden;
-        position: relative;
-    }
-
-    .video-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-
-    iframe {
-        width: 100%;
-        height: 100%;
-    }
-
-    /* Facebook Reel - Tỷ lệ dọc 9:16 */
-    .reel-container {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .reel-container iframe {
-        width: auto;
-        /* Chiều rộng tự động */
-        height: 100%;
-        aspect-ratio: 9 / 16;
-        max-height: 100%;
-    }
-
-    .reel-note {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: rgba(0, 0, 0, 0.6);
-        color: white;
-        font-size: 12px;
-        padding: 5px 10px;
-        border-radius: 5px;
+        padding: 20px;
         text-align: center;
-        white-space: nowrap;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .module-info h1 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .module-info p {
+        font-size: 18px;
+        color: #666;
+        line-height: 1.5;
     }
 </style>
 
-<!-- Instagram SDK -->
-<script async src="https://www.instagram.com/embed.js"></script>
+
 
 <script>
     function loadVideo(videoUrl) {
         let container = document.querySelector(".video-wrapper");
-        container.innerHTML = ""; // Xóa nội dung cũ
+        container.innerHTML = "";
 
         if (!videoUrl) {
             container.innerHTML = "<p>Vui lòng nhập URL video.</p>";
@@ -156,20 +154,16 @@
         }
 
         if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
-            // Xử lý YouTube
             let videoId = videoUrl.split("v=")[1]?.split("&")[0] || videoUrl.split("/").pop();
             let embedUrl = `https://www.youtube.com/embed/${videoId}`;
             container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
         }
         else if (videoUrl.includes("facebook.com/watch")) {
-            // Facebook Watch giữ nguyên (16:9)
             let embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoUrl)}&show_text=0`;
             container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
         }
         else if (videoUrl.includes("facebook.com/reel")) {
-            // Facebook Reel - Fix hiển thị đúng 9:16
             let embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoUrl)}&show_text=0`;
-            container.innerHTML = `<div class="reel-container"><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe></div>`;
             container.innerHTML = `
                 <div class="reel-container">
                     <iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>
@@ -178,16 +172,14 @@
             `;
         }
         else if (videoUrl.includes("instagram.com/reel") || videoUrl.includes("instagram.com/p/")) {
-            // Xử lý Instagram Reel
             container.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${videoUrl}" data-instgrm-version="14"></blockquote>`;
-            instgrm.Embeds.process(); // Load lại Instagram SDK
+            setTimeout(() => instgrm.Embeds.process(), 500);
         }
         else {
             container.innerHTML = "<p>URL không hợp lệ hoặc không được hỗ trợ.</p>";
         }
-    
+    }
 
-    // 💡 Thay link này để hiển thị video mong muốn
-    let videoUrl = "https://www.youtube.com/watch?v=LXl_am_35Bs"; // Thay bằng link của bạn
+    let videoUrl = "https://www.youtube.com/watch?v=Ik3OAX8n018";
     loadVideo(videoUrl);
 </script>
