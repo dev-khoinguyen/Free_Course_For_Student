@@ -1,0 +1,124 @@
+@{
+    ViewData["Title"] = "test";
+    Layout = "/Views/Shared/_homepage-layout.cshtml";
+}
+<!-- Facebook SDK -->
+<div id="fb-root"></div>
+
+<!-- Instagram SDK -->
+<script async src="https://www.instagram.com/embed.js"></script>
+
+<style>
+    #video-container {
+        width: 100%;
+        max-width: 800px;
+        height: 500px;
+        /* Chiều cao cố định */
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ddd;
+        background: black;
+        /* Nền đen nếu video không fit */
+        overflow: hidden;
+        position: relative;
+    }
+
+    .video-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Facebook Reel - Tỷ lệ dọc 9:16 */
+    .reel-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reel-container iframe {
+        width: auto;
+        /* Chiều rộng tự động */
+        height: 100%;
+        aspect-ratio: 9 / 16;
+        max-height: 100%;
+    }
+     .reel-note {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        font-size: 12px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+        white-space: nowrap;
+    }
+</style>
+
+<div id="video-container">
+    <div class="video-wrapper">
+        <!-- Video sẽ hiển thị ở đây -->
+    </div>
+</div>
+
+<script>
+    function loadVideo(videoUrl) {
+        let container = document.querySelector(".video-wrapper");
+        container.innerHTML = ""; // Xóa nội dung cũ
+
+        if (!videoUrl) {
+            container.innerHTML = "<p>Vui lòng nhập URL video.</p>";
+            return;
+        }
+
+        if (videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")) {
+            // Xử lý YouTube
+            let videoId = videoUrl.split("v=")[1]?.split("&")[0] || videoUrl.split("/").pop();
+            let embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+        }
+        else if (videoUrl.includes("facebook.com/watch")) {
+            // Facebook Watch giữ nguyên (16:9)
+            let embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoUrl)}&show_text=0`;
+            container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+        }
+        else if (videoUrl.includes("facebook.com/reel")) {
+            // Facebook Reel - Fix hiển thị đúng 9:16
+            let embedUrl = `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(videoUrl)}&show_text=0`;
+            container.innerHTML = `<div class="reel-container"><iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe></div>`;
+            container.innerHTML = `
+                <div class="reel-container">
+                    <iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>
+                    <p class="reel-note">📢 Đối với video Reel, bạn nên phóng to để xem rõ hơn!</p>
+                </div>
+            `;
+        }
+        else if (videoUrl.includes("instagram.com/reel") || videoUrl.includes("instagram.com/p/")) {
+            // Xử lý Instagram Reel
+            container.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${videoUrl}" data-instgrm-version="14"></blockquote>`;
+            instgrm.Embeds.process(); // Load lại Instagram SDK
+        }
+        else {
+            container.innerHTML = "<p>URL không hợp lệ hoặc không được hỗ trợ.</p>";
+        }
+    }
+
+    // 💡 Thay link này để hiển thị video mong muốn
+    let videoUrl = "https://www.youtube.com/watch?v=Ik3OAX8n018"; // Thay bằng link của bạn
+    loadVideo(videoUrl);
+</script>
