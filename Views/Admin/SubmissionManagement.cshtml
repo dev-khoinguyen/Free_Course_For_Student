@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "SubmissionManagement";
+    Layout = "/Views/Shared/_admin-layout.cshtml";
+}
+ <div class="container mt-5">
+        <h2 class="text-center mb-4">Submission Management</h2>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>User ID</th>
+                    <th>Module ID</th>
+                    <th>Submission URL</th>
+                    <th>Score</th>
+                    <th>Submitted At</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>101</td>
+                    <td>5</td>
+                    <td><a href="#" class="text-primary">View</a></td>
+                    <td><input type="number" class="form-control" value="85"></td>
+                    <td>2024-02-23</td>
+                    <td><span class="badge bg-success">Approved</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-success">Save</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>102</td>
+                    <td>3</td>
+                    <td><a href="#" class="text-primary">View</a></td>
+                    <td><input type="number" class="form-control" value="90"></td>
+                    <td>2024-02-22</td>
+                    <td><span class="badge bg-warning">Pending</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-success">Save</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary">Add Submission</button>
+    </div>

@@ -56,18 +56,20 @@ const totalPages = Math.ceil(totalItems / itemsPerPage); // Tính tổng số tr
 let currentPage = 0;
 
 document.getElementById('next').addEventListener('click', () => {
-    // Chuyển đến trang tiếp theo
-    currentPage = (currentPage + 1) % totalPages; 
-    updateSlider();
+  // Chuyển đến trang tiếp theo
+  currentPage = (currentPage + 1) % totalPages;
+  updateSlider();
 });
 
 document.getElementById('prev').addEventListener('click', () => {
-    // Chuyển đến trang trước
-    currentPage = (currentPage - 1 + totalPages) % totalPages; 
-    updateSlider();
+  // Chuyển đến trang trước
+  currentPage = (currentPage - 1 + totalPages) % totalPages;
+  updateSlider();
 });
 
 function updateSlider() {
-    const offset = -currentPage * (100 / totalPages);
-    sliderWrapper.style.transform = `translateX(${offset}%)`;
+  const offset = -currentPage * (100 / totalPages);
+  sliderWrapper.style.transform = `translateX(${offset}%)`;
 }
+
+

@@ -1,0 +1,105 @@
+@{
+    ViewData["Title"] = "ModuleManagement";
+    Layout = "/Views/Shared/_admin-layout.cshtml";
+}
+
+<script>
+    function editModule(id, title, position, docURL, videoURL, description, isFinished) {
+        document.querySelector("input[name='id']").value = id;
+        document.querySelector("input[name='title']").value = title;
+        document.querySelector("input[name='position']").value = position;
+        document.querySelector("input[name='docURL']").value = docURL;
+        document.querySelector("input[name='videoURL']").value = videoURL;
+        document.querySelector("textarea[name='description']").value = description;
+        document.querySelector("select[name='isFinished']").value = isFinished;
+    }
+</script>
+<div class="container container--module">
+    <h2 class="title--module">Thêm/Sửa Module</h2>
+
+    <!-- Form thêm/sửa module -->
+    <div class="card card--module">
+        <div class="card-body">
+
+            <form method="post" action="#">
+                <input type="hidden" name="id">
+                <div class="mb-3">
+                    <label class="form-label form-label--module">Tiêu đề</label>
+                    <input type="text" name="title" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label form-label--module">Vị trí</label>
+                    <input type="number" name="position" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label form-label--module">Tài liệu URL</label>
+                    <input type="url" name="docURL" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label form-label--module">Video URL</label>
+                    <input type="url" name="videoURL" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label form-label--module">Mô tả</label>
+                    <textarea name="description" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label form-label--module">Hoàn thành</label>
+                    <select name="isFinished" class="form-control">
+                        <option value="false">Chưa hoàn thành</option>
+                        <option value="true">Đã hoàn thành</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn--module">Lưu</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bảng danh sách module -->
+    <table class="table table-bordered table--module">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Tiêu đề</th>
+                <th>Vị trí</th>
+                <th>Tài liệu</th>
+                <th>Video</th>
+                <th>Mô tả</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Module 1</td>
+                <td>1</td>
+                <td><a href="#">Tài liệu</a></td>
+                <td><a href="#">Video</a></td>
+                <td>Mô tả module 1</td>
+                <td>Chưa hoàn thành</td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm btn--module"
+                        onclick="editModule('1', 'Module 1', '1', '#', '#', 'Mô tả module 1', 'false')">Sửa</button>
+                    <a href="#" class="btn btn-danger btn-sm btn--module"
+                        onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Module 2</td>
+                <td>2</td>
+                <td><a href="#">Tài liệu</a></td>
+                <td><a href="#">Video</a></td>
+                <td>Mô tả module 2</td>
+                <td>Đã hoàn thành</td>
+                <td>
+                    <button type="button" class="btn btn-warning btn-sm btn--module"
+                        onclick="editModule('2', 'Module 2', '2', '#', '#', 'Mô tả module 2', 'true')">Sửa</button>
+                    <a href="#" class="btn btn-danger btn-sm btn--module"
+                        onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
