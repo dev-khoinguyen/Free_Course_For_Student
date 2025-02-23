@@ -158,5 +158,9 @@ namespace EXE_PROJECT.Controllers
         {
             return View();
         }
+          public IActionResult ClientProfile()
+        {
+            return View();
+        }
     }
 }

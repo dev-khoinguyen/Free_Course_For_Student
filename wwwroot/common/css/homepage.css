@@ -2099,3 +2099,22 @@ h2 {
 .module-btn--module-des:hover {
   background: #0056b3;
 }
+
+/* client profile  */
+.progress-container {
+  max-width: 600px;
+  margin: 50px auto;
+}
+.course-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.course-title {
+  flex: 1;
+}
+.progress {
+  flex: 2;
+  height: 25px;
+}

@@ -1,0 +1,111 @@
+@{
+    ViewData["Title"] = "ClientProfile";
+    Layout = "/Views/Shared/_homepage-layout.cshtml";
+}
+<div class="container information-container">
+    <div class="information-card">
+        <div class="information-tab">
+            <button>
+                Thông tin tài khoản
+            </button>
+        </div>
+        <div class="text-center mb-4">
+            <p class="font-weight-bold">
+                Ảnh đại diện
+            </p>
+            <img alt="Profile picture placeholder" class="information-profile-pic" height="100"
+                src="https://storage.googleapis.com/a1aa/image/VR_nnWwcQ3FmfiAEsUPA-2z5RFR6kQzjJMTCoeRoYM4.jpg"
+                width="100" />
+
+        </div>
+        <div class="border p-4 rounded">
+            <h2 class="information-section-title">
+                Thông tin cá nhân
+            </h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="information-name">
+                        Họ và tên
+                    </label>
+                    <input readonly class="form-control" id="information-name" type="text" value="" />
+                </div>
+                <div class="form-group">
+                    <label for="information-phone">
+                        Số điện thoại
+                    </label>
+                    <input readonly class="form-control" id="information-phone" type="text" value="08253275235" />
+                </div>
+                <div class="form-group">
+                    <label for="information-email">
+                        Địa chỉ email
+                    </label>
+                    <input readonly class="form-control" id="information-email" type="email" value="" />
+                </div>
+                <div class="form-group">
+                    <label for="information-gender">
+                        Giới tính
+                    </label>
+                    <select class="form-control" id="information-gender">
+                        <option>
+                            Nam
+                        </option>
+                        <option>
+                            Nữ
+                        </option>
+                        <option>
+                            Khác
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="information-dob">
+                        Ngày sinh
+                    </label>
+                    <input readonly class="form-control" id="information-dob" placeholder="01/05/2003" type="text" />
+                </div>
+                <div class="form-group">
+                    <label for="information-address">
+                        Địa chỉ chi tiết
+                    </label>
+                    <input readonly class="form-control" id="information-address" type="text"
+                        value="Mỹ Xuyên, Sóc Trăng" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+    <div class="progress-container">
+        <h3 class="text-center">User Course Progress</h3>
+        <div id="course-list">
+            <!-- Courses will be inserted here dynamically -->
+        </div>
+    </div>
+
+    <script>
+        const courses = [
+            { name: "Course 1", allModules: 4, finishedModules: 1 },
+            { name: "Course 2", allModules: 5, finishedModules: 2 },
+            { name: "Course 3", allModules: 6, finishedModules: 3 },
+            { name: "Course 4", allModules: 3, finishedModules: 2 },
+            { name: "Course 5", allModules: 8, finishedModules: 4 }
+        ];
+
+        const courseList = document.getElementById("course-list");
+
+        courses.forEach(course => {
+            let progress = (course.finishedModules / course.allModules) * 100;
+            let courseItem = document.createElement("div");
+            courseItem.classList.add("course-item");
+            courseItem.innerHTML = `
+                <div class="course-title">${course.name}</div>
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" 
+                         style="width: ${progress}%" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100">
+                        ${progress.toFixed(0)}%
+                    </div>
+                </div>
+            `;
+            courseList.appendChild(courseItem);
+        });
+    </script>
