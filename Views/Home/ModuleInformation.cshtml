@@ -1,14 +1,85 @@
 @{
-    ViewData["Title"] = "test";
+    ViewData["Title"] = "ModuleInformation";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
+
 <!-- Facebook SDK -->
 <div id="fb-root"></div>
+<div id="video-container">
+    <div class="video-wrapper">
+        <!-- Video sẽ hiển thị ở đây -->
+    </div>
+</div>
 
-<!-- Instagram SDK -->
-<script async src="https://www.instagram.com/embed.js"></script>
-
+<div class="module-info">
+    <h1>Lập trình C# cơ bản/h1>
+        <p>Khóa học này giúp bạn nắm vững các khái niệm cơ bản về C#, từ cú pháp đến lập trình hướng đối tượng.</p>
+</div>
+<div class="button-group">
+    <a asp-action="AllModule" class="big-button back-button">⬅ Quay lại</a>
+    <a class="big-button submit-button">📤 Nộp bài</a>
+</div>
 <style>
+    .module-info {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .module-info h1 {
+        font-size: 28px;
+        color: #333;
+    }
+
+    .module-info p {
+        font-size: 18px;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    /* Định dạng nút */
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin: 40px 0;
+    }
+
+    .big-button {
+        width: 80%;
+        max-width: 400px;
+        padding: 15px;
+        font-size: 20px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .back-button {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
+    }
+
+    .submit-button {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .submit-button:hover {
+        background-color: #218838;
+    }
+
     #video-container {
         width: 100%;
         max-width: 800px;
@@ -55,7 +126,8 @@
         aspect-ratio: 9 / 16;
         max-height: 100%;
     }
-     .reel-note {
+
+    .reel-note {
         position: absolute;
         bottom: 10px;
         left: 50%;
@@ -70,11 +142,8 @@
     }
 </style>
 
-<div id="video-container">
-    <div class="video-wrapper">
-        <!-- Video sẽ hiển thị ở đây -->
-    </div>
-</div>
+<!-- Instagram SDK -->
+<script async src="https://www.instagram.com/embed.js"></script>
 
 <script>
     function loadVideo(videoUrl) {
@@ -119,6 +188,6 @@
     
 
     // 💡 Thay link này để hiển thị video mong muốn
-    let videoUrl = "https://www.youtube.com/watch?v=Ik3OAX8n018"; // Thay bằng link của bạn
+    let videoUrl = "https://www.youtube.com/watch?v=LXl_am_35Bs"; // Thay bằng link của bạn
     loadVideo(videoUrl);
 </script>

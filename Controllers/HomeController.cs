@@ -144,5 +144,19 @@ namespace EXE_PROJECT.Controllers
             return RedirectToAction("Login", "Home"); // Chuyển về trang đăng nhập
         }
 
+        public IActionResult CourseInformation()
+        {
+            return View();
+        }
+
+
+        public IActionResult AllModule()
+        {
+            return View();
+        }
+        public IActionResult ModuleInformation()
+        {
+            return View();
+        }
     }
 }
