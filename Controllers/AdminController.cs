@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using EXE_PROJECT.Models;
+using Free_Course_For_Student.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -11,26 +13,120 @@ namespace Free_Course_For_Student.Controllers
     [Route("[controller]")]
     public class AdminController : Controller
     {
-        private readonly ILogger<AdminController> _logger;
+        private readonly IUserRepository _userRepository;
+        private readonly ICourseRepository _courseRepo;
+        private readonly IModuleRepository _moduleRepository;
+        private readonly ISubmissionRepository _submissionRepository;
 
-        public AdminController(ILogger<AdminController> logger)
+        public AdminController(IUserRepository userRepository, ICourseRepository courseRepo, IModuleRepository moduleRepository, ISubmissionRepository submissionRepository)
         {
-            _logger = logger;
+            _userRepository = userRepository;
+            _courseRepo = courseRepo;
+            _moduleRepository = moduleRepository;
+            _submissionRepository = submissionRepository;
         }
 
         [HttpGet("")]
         public IActionResult Index() { return View(); }
 
         [HttpGet("user-management")]
-        public IActionResult UserManagement() { return View(); }
+        public IActionResult UserManagement()
+        {
+            var users = _userRepository.GetAllUser();
+            return View(users);
+        }
 
         [HttpGet("course-management")]
-        public IActionResult CourseManagement() { return View(); }
+        public IActionResult CourseManagement()
+        {
+            var courses = _courseRepo.GetAllCourse();
+            return View(courses);
+        }
+
+        [HttpPost("course/save")]
+        public IActionResult SaveCourse(Course course)
+        {
+            if (course.Id == 0)
+            {
+                _courseRepo.AddCourse(course);
+            }
+            else
+            {
+                _courseRepo.UpdateCourse(course);
+            }
+            return RedirectToAction("CourseManagement");
+        }
+
+        [HttpPost("course/delete/{id}")]
+        public IActionResult DeleteCourse(int id)
+        {
+            _courseRepo.DeleteCourse(id);
+            return RedirectToAction("CourseManagement");
+        }
+
         [HttpGet("submission-management")]
-        public IActionResult SubmissionManagement() { return View(); }
+        public IActionResult SubmissionManagement()
+        {
+            var submissions = _submissionRepository.GetAllSubmissions(); // Lấy hết từ DB
+            return View(submissions);
+        }
 
-        [HttpGet("module-management")]
-        public IActionResult ModuleManagement() { return View(); }
+        // 🟢 Xóa Submission
+        [HttpPost("delete-submission/{submissionId}")]
+        public IActionResult DeleteSubmission(int submissionId)
+        {
+            _submissionRepository.Delete(submissionId);
+            return RedirectToAction("SubmissionManagement");
+        }
 
+        [HttpPost("update-submission")]
+        public IActionResult UpdateSubmission([FromBody] Submission submission)
+        {
+            var existingSubmission = _submissionRepository.GetById(submission.SubmissionId);
+            if (existingSubmission != null)
+            {
+                existingSubmission.Score = submission.Score;
+                _submissionRepository.Update(existingSubmission);
+            }
+            return Ok();
+        }
+
+
+
+        // 🟢 Lấy danh sách module theo CourseId
+        [HttpGet("module-management/{courseId}")]
+        public IActionResult ModuleManagement(int courseId)
+        {
+            var modules = _moduleRepository.GetModuleListbycourseid(courseId);
+            ViewBag.CourseId = courseId;
+            return View(modules);
+        }
+
+        // 🟢 Thêm hoặc cập nhật module
+        [HttpPost("save-module")]
+        public IActionResult SaveModule(Module module)
+        {
+            if (module.ModuleId == 0)
+            {
+                _moduleRepository.Add(module);
+            }
+            else
+            {
+                _moduleRepository.Update(module);
+            }
+            return RedirectToAction("ModuleManagement", new { courseId = module.CourseId });
+        }
+
+        // 🟢 Xóa module
+        [HttpPost("delete-module/{moduleId}")]
+        public IActionResult DeleteModule(int moduleId)
+        {
+            var module = _moduleRepository.GetById(moduleId);
+            if (module != null)
+            {
+                _moduleRepository.Delete(moduleId);
+            }
+            return RedirectToAction("ModuleManagement", new { courseId = module.CourseId });
+        }
     }
 }

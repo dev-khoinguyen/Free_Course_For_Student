@@ -27,8 +27,9 @@ namespace Free_Course_For_Student.Repository.Repository
 
         public List<User> GetAllUser()
         {
-            throw new NotImplementedException();
+            return _context.Users.ToList();
         }
+
 
         public User GetUserById(int id)
         {

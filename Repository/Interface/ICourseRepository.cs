@@ -13,6 +13,6 @@ namespace Free_Course_For_Student.Repository.Interface
         public int GetCourseCount();
         public void AddCourse(Course course);
         public void UpdateCourse(Course course);
-        public void DeleteCourse(Course course);
+        public void DeleteCourse(int id);
     }
 }

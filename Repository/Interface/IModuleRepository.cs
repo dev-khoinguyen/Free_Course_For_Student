@@ -8,11 +8,11 @@ namespace Free_Course_For_Student.Repository.Interface
 {
     public interface IModuleRepository
     {
-        public List<Module> GetModuleListbycourseid(int courseId);
-        public List<Module> GetModuleList(int moduleid);
-        public void Add(Module module);
-        public void Update(Module module);
-        public void Delete(int moduleid);
+        List<Module> GetModuleListbycourseid(int courseId);
+        Module GetById(int moduleId);
+        void Add(Module module);
+        void Update(Module module);
+        void Delete(int moduleId);
 
     }
 }
