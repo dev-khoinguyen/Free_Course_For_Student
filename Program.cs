@@ -27,6 +27,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 builder.Services.AddScoped<IModuleRepository, ModuleRepository>();
 builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
+builder.Services.AddScoped<IModuleRepository, ModuleRepository>();
 
 // Không cần SqlConnection riêng, vì DbContext đã quản lý kết nối
 // builder.Services.AddTransient<SqlConnection>(_ =>

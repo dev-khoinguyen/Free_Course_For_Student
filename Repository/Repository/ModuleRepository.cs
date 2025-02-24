@@ -44,5 +44,10 @@ namespace Free_Course_For_Student.Repository.Repository
                 _context.SaveChanges();
             }
         }
+
+        public List<Module> GetAvaiModule(int courseId)
+        {
+            return _context.Modules.Where(m => m.CourseId == courseId && m.IsFinished == true).OrderBy(m => m.Position).ToList();
+        }
     }
 }

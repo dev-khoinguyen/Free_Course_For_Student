@@ -16,12 +16,14 @@ namespace EXE_PROJECT.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IUserRepository _userRepository;
         private readonly ICourseRepository _courseRepository;
+        private readonly IModuleRepository _moduleRepository;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository)
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
             _courseRepository = courseRepository;
+            _moduleRepository = moduleRepository;
         }
 
         public IActionResult Index()
@@ -44,6 +46,10 @@ namespace EXE_PROJECT.Controllers
         }
         public IActionResult LeaningMaterials()
         {
+            if (!IsLogin())
+            {
+                return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
+            }
             var course = _courseRepository.GetAllCourse();
             return View(course);
         }
@@ -61,7 +67,7 @@ namespace EXE_PROJECT.Controllers
             // Kiểm tra session có tồn tại không
             int? userId = HttpContext.Session.GetInt32("UserId");
 
-            if (userId == null)
+            if (!IsLogin())
             {
                 return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
             }
@@ -88,8 +94,15 @@ namespace EXE_PROJECT.Controllers
                 // Lưu thông tin user vào session
                 HttpContext.Session.SetString("UserName", user.Username);
                 HttpContext.Session.SetInt32("UserId", user.Id);
-
-                return RedirectToAction("Index", "Home"); // Chuyển hướng sau khi đăng nhập thành công
+                HttpContext.Session.SetString("Role", user.Role);
+                if (user.Role == "admin")
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home"); // Chuyển hướng sau khi đăng nhập thành công
+                }
             }
             else
             {
@@ -120,47 +133,65 @@ namespace EXE_PROJECT.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        [HttpGet]
-        public IActionResult UploadResource()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult UploadResource(Course model)
-        {
-
-            if (!ModelState.IsValid)
-            {
-                return View(model); // Trả lại form nếu có lỗi
-            }
-            _courseRepository.AddCourse(model); // Thêm trực tiếp vào DB
-            return RedirectToAction("Login", "Home"); // Hiển thị thông báo đơn giản
-        }
-
         public IActionResult Logout()
         {
             HttpContext.Session.Clear(); // Xóa toàn bộ session
             return RedirectToAction("Login", "Home"); // Chuyển về trang đăng nhập
         }
 
-        public IActionResult CourseInformation()
+        [HttpGet]
+        public IActionResult CourseInformation(int id)
         {
-            return View();
+            if (!IsLogin())
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            var course = _courseRepository.GetCourseById(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return View(course);
         }
 
 
-        public IActionResult AllModule()
+        [HttpGet]
+        public IActionResult AllModule(int id)
         {
-            return View();
+            if (!IsLogin())
+            {
+                return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
+            }
+            var module = _moduleRepository.GetAvaiModule(id);
+            return View(module);
         }
         public IActionResult ModuleInformation()
         {
+            if (!IsLogin())
+            {
+                return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
+            }
             return View();
         }
-          public IActionResult ClientProfile()
+        public IActionResult ClientProfile()
         {
+            if (!IsLogin())
+            {
+                return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
+            }
             return View();
+        }
+
+        public bool IsLogin()
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EXE_PROJECT.Models;
 using Free_Course_For_Student.Repository.Interface;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -27,11 +28,22 @@ namespace Free_Course_For_Student.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Index() { return View(); }
+        public IActionResult Index()
+        {
+            if (!IsAdmin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
 
         [HttpGet("user-management")]
         public IActionResult UserManagement()
         {
+            if (!IsAdmin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var users = _userRepository.GetAllUser();
             return View(users);
         }
@@ -39,6 +51,10 @@ namespace Free_Course_For_Student.Controllers
         [HttpGet("course-management")]
         public IActionResult CourseManagement()
         {
+            if (!IsAdmin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var courses = _courseRepo.GetAllCourse();
             return View(courses);
         }
@@ -67,6 +83,10 @@ namespace Free_Course_For_Student.Controllers
         [HttpGet("submission-management")]
         public IActionResult SubmissionManagement()
         {
+            if (!IsAdmin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var submissions = _submissionRepository.GetAllSubmissions(); // Lấy hết từ DB
             return View(submissions);
         }
@@ -97,6 +117,10 @@ namespace Free_Course_For_Student.Controllers
         [HttpGet("module-management/{courseId}")]
         public IActionResult ModuleManagement(int courseId)
         {
+            if (!IsAdmin())
+            {
+                return RedirectToAction("Index", "Home");
+            }
             var modules = _moduleRepository.GetModuleListbycourseid(courseId);
             ViewBag.CourseId = courseId;
             return View(modules);
@@ -127,6 +151,16 @@ namespace Free_Course_For_Student.Controllers
                 _moduleRepository.Delete(moduleId);
             }
             return RedirectToAction("ModuleManagement", new { courseId = module.CourseId });
+        }
+
+        public bool IsAdmin()
+        {
+            string role = HttpContext.Session.GetString("Role");
+            if (role == "admin")
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

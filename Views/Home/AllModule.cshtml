@@ -1,36 +1,26 @@
+@model List<EXE_PROJECT.Models.Module>
+
 @{
     ViewData["Title"] = "AllModule";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
+
 <div class="container module-container--cl-module">
     <h2 class="text-center mb-4">Danh sách Modules</h2>
 
-    <div class="module-card--cl-module">
-        <h5 class="module-title--cl-module">Module 1: Giới thiệu</h5>
-        <p class="module-description--cl-module">Mô tả ngắn về Module 1.</p>
-        <a href="#" class="btn btn-primary module-btn--cl-module">Xem chi tiết</a>
-    </div>
-
-    <div class="module-card--cl-module">
-        <h5 class="module-title--cl-module">Module 2: Nội dung chính</h5>
-        <p class="module-description--cl-module">Mô tả ngắn về Module 2.</p>
-        <a href="#" class="btn btn-primary module-btn--cl-module">Xem chi tiết</a>
-    </div>
- 
-  <div class="module-card--cl-module">
-        <h5 class="module-title--cl-module">Module 3: Nội dung chính</h5>
-        <p class="module-description--cl-module">Mô tả ngắn về Module 3.</p>
-        <a href="#" class="btn btn-primary module-btn--cl-module">Xem chi tiết</a>
-    </div>
-     <div class="module-card--cl-module">
-        <h5 class="module-title--cl-module">Module 4: Nội dung chính</h5>
-        <p class="module-description--cl-module">Mô tả ngắn về Module 4.</p>
-        <a href="#" class="btn btn-primary module-btn--cl-module">Xem chi tiết</a>
-    </div>
-     <div class="module-card--cl-module">
-        <h5 class="module-title--cl-module">Module 5: Nội dung chính</h5>
-        <p class="module-description--cl-module">Mô tả ngắn về Module 5.</p>
-        <a href="#" class="btn btn-primary module-btn--cl-module">Xem chi tiết</a>
-    </div>
-
+    @if (Model != null && Model.Any())
+    {
+        foreach (var module in Model)
+        {
+            <div class="module-card--cl-module">
+                <h5 class="module-title--cl-module">Module @module.Position: @module.Title</h5>
+                <p class="module-description--cl-module">@module.Description</p>
+                <a href="/Home/ModuleDetail/@module.ModuleId" class="btn btn-primary module-btn--cl-module">Xem chi tiết</a>
+            </div>
+        }
+    }
+    else
+    {
+        <p class="text-center text-muted">Chưa có module nào.</p>
+    }
 </div>

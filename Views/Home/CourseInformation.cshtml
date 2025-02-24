@@ -1,12 +1,15 @@
+@model EXE_PROJECT.Models.Course
+
 @{
     ViewData["Title"] = "CourseInformation";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
- <div class="container course-container--cl-module">
-        <div class="card course-card--cl-module">
-            <h5 class="course-title--cl-module">Tên khóa học</h5>
-            <p class="course-description--cl-module">Mô tả ngắn gọn về nội dung và mục tiêu của khóa học.</p>
-            <a href="#" class="btn btn-primary course-btn--cl-module">Tham gia nhóm</a>
-            <a href="#" class="btn btn-secondary course-btn--cl-module">Xem các Module</a>
-        </div>
+
+<div class="container course-container--cl-module">
+    <div class="card course-card--cl-module">
+        <h5 class="course-title--cl-module">@Model.Title</h5>
+        <p class="course-description--cl-module">@Model.Description</p>
+        <a href="@Model.GroupChatUrl" class="btn btn-primary course-btn--cl-module" target="_blank">Tham gia nhóm</a>
+        <a asp-action="AllModule" asp-controller="Home" asp-route-id="@Model.Id" class="btn btn-secondary course-btn--cl-module">Xem các Module</a>
     </div>
+</div>

@@ -9,6 +9,7 @@ namespace Free_Course_For_Student.Repository.Interface
     public interface IModuleRepository
     {
         List<Module> GetModuleListbycourseid(int courseId);
+        List<Module> GetAvaiModule(int courseId);
         Module GetById(int moduleId);
         void Add(Module module);
         void Update(Module module);
