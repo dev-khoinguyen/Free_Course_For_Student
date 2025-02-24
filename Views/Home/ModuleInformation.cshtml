@@ -27,7 +27,7 @@
     {
         <span class="no-resource">🚫 Chưa có tài nguyên</span>
     }
-    <a class="big-button submit-button">📤 Nộp bài</a>
+    <a asp-action="ClientSubmission" asp-controller="Home" asp-route-itemid="@Model.ModuleId" class="big-button submit-button">📤 Nộp bài</a>
     <a asp-action="AllModule" asp-controller="Home" asp-route-id="@Model.CourseId" class="big-button back-button">⬅ Quay
         lại</a>
 </div>

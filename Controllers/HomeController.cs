@@ -18,14 +18,16 @@ namespace EXE_PROJECT.Controllers
         private readonly ICourseRepository _courseRepository;
         private readonly IModuleRepository _moduleRepository;
         private readonly IUserCourseRepository _userCourseRepository;
+        private readonly ISubmissionRepository _submissionRepository;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository, IUserCourseRepository userCourseRepository)
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository, IUserCourseRepository userCourseRepository, ISubmissionRepository submissionRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
             _courseRepository = courseRepository;
             _moduleRepository = moduleRepository;
             _userCourseRepository = userCourseRepository;
+            _submissionRepository = submissionRepository;
         }
 
         public IActionResult Index()
@@ -154,11 +156,11 @@ namespace EXE_PROJECT.Controllers
             var validate = _userCourseRepository.IsJoin(id, user);
             if (validate)
             {
-                ViewBag.isJoin=true;
+                ViewBag.isJoin = true;
             }
             else
             {
-                ViewBag.isJoin=false;
+                ViewBag.isJoin = false;
             }
             var course = _courseRepository.GetCourseById(id);
             if (course == null)
@@ -176,7 +178,7 @@ namespace EXE_PROJECT.Controllers
             _userCourseRepository.AddUserCourse(userId, id);
             return RedirectToAction("CourseInformation", new { id = id });
         }
-        
+
 
 
         [HttpGet]
@@ -218,8 +220,57 @@ namespace EXE_PROJECT.Controllers
             }
             return true;
         }
-         public IActionResult ClientSubmission()
+        [HttpGet]
+        public IActionResult ClientSubmission(int itemid)
         {
+            if (!IsLogin())
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            ViewBag.ModuleId = itemid;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ClientSubmission(int itemid, string submissionUrl)
+        {
+            ViewBag.ModuleId = itemid;
+            int? userId = HttpContext.Session.GetInt32("UserId");
+
+            if (!IsLogin() || userId == null)
+            {
+                return RedirectToAction("Login", "Home");
+            }
+
+            if (string.IsNullOrWhiteSpace(submissionUrl))
+            {
+                ModelState.AddModelError("", "Vui lòng nhập URL hợp lệ.");
+                ViewBag.ModuleId = itemid;
+                return View();
+            }
+
+            // Kiểm tra nếu đã nộp bài
+            bool isSubmitted = _submissionRepository.IsSubmiss(userId, itemid);
+            if (isSubmitted)
+            {
+                TempData["ErrorMessage"] = "Bạn đã nộp bài cho module này!";
+                return View();
+            }
+
+            // Tạo mới Submission
+            var submission = new Submission
+            {
+                UserId = userId.Value,
+                ModuleId = itemid,
+                SubmissionUrl = submissionUrl,
+                Score = 0, // Mặc định 0 điểm
+                Status = "Pending", // Chờ duyệt
+                SubmittedAt = DateTime.Now
+            };
+
+            _submissionRepository.Add(submission);
+            TempData["SuccessMessage"] = "Nộp bài thành công!";
             return View();
         }
     }

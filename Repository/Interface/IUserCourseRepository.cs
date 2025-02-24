@@ -16,5 +16,7 @@ namespace Free_Course_For_Student.Repository.Interface
         public List<UserCourse> GetUserCourseByUserId(int id);
         public List<UserCourse> GetUserCourseByCourseId(int id);
         public bool IsJoin(int courseId, int? userId);
+        public void UpdateCourseCount(int courseId, int? userId);
+        public void UpdateFinishCourse(int courseId, int? userId);
     }
 }

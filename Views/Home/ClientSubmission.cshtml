@@ -1,20 +1,35 @@
 @{
-    ViewData["Title"] = "ClientSubmission";
-       Layout = "/Views/Shared/_homepage-layout.cshtml";
+    ViewData["Title"] = "Nộp Bài";
+    Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
-  <div class="container mt-5">
-        <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">Nộp Bài</h5>
-            </div>
-            <div class="card-body">
-                <form>
-                    <div class="mb-3">
-                        <label for="submissionUrl" class="form-label">Link Google Drive</label>
-                        <input type="url" class="form-control" id="submissionUrl" placeholder="Nhập link Google Drive">
-                    </div>
-                    <button type="submit" class="btn btn-success">Nộp bài</button>
-                </form>
-            </div>
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Nộp Bài</h5>
         </div>
-  </div>
+        <div class="card-body">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+            }
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+            }
+
+            <form method="post">
+                <input type="hidden" name="itemid" value="@ViewBag.ModuleId" />
+                <div class="mb-3">
+                    <label for="submissionUrl" class="form-label">Link Google Drive</label>
+                    <input type="url" class="form-control" id="submissionUrl" name="submissionUrl"
+                        placeholder="Nhập link Google Drive" required>
+                </div>
+                <button type="submit" class="btn btn-success">📤 Nộp bài</button>
+                <a asp-action="ModuleInformation" asp-controller="Home" asp-route-id="@ViewBag.ModuleId"
+                    class="btn btn-success">⬅ Quay
+                    lại</a>
+            </form>
+        </div>
+    </div>
+</div>

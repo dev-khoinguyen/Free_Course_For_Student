@@ -106,7 +106,24 @@ namespace Free_Course_For_Student.Controllers
             if (existingSubmission != null)
             {
                 existingSubmission.Score = submission.Score;
+                if (submission.Status == "Approved") // Nếu admin duyệt bài
+                {
+                    existingSubmission.Status = "Approved";
+                }
                 _submissionRepository.Update(existingSubmission);
+            }
+            return Ok();
+        }
+
+
+        [HttpPost("approve-submission/{submissionId}")]
+        public IActionResult ApproveSubmission(int submissionId)
+        {
+            var submission = _submissionRepository.GetById(submissionId);
+            if (submission != null)
+            {
+                submission.Status = "Approved"; // Cập nhật trạng thái
+                _submissionRepository.Update(submission);
             }
             return Ok();
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EXE_PROJECT.Models;
 using Free_Course_For_Student.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace Free_Course_For_Student.Repository.Repository
 {
@@ -16,8 +17,12 @@ namespace Free_Course_For_Student.Repository.Repository
         }
         public List<Submission> GetAllSubmissions()
         {
-            return _context.Submissions.ToList();
+            return _context.Submissions
+                .Include(s => s.User)   // Load User để lấy Username
+                .Include(s => s.Module) // Load Module để lấy Title
+                .ToList();
         }
+
 
         public Submission GetById(int id)
         {
@@ -61,6 +66,11 @@ namespace Free_Course_For_Student.Repository.Repository
                 _context.Submissions.Remove(submission);
                 _context.SaveChanges();
             }
+        }
+
+        public bool IsSubmiss(int? userId, int moduleId)
+        {
+            return _context.Submissions.Any(s => s.UserId == userId && s.ModuleId == moduleId);
         }
     }
 }

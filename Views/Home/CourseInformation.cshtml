@@ -4,7 +4,14 @@
     ViewData["Title"] = "CourseInformation";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
-
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
 <div class="container course-container--cl-module">
     <div class="card course-card--cl-module">
         <h5 class="course-title--cl-module">@Model.Title</h5>

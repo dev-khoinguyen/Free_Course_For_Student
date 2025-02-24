@@ -14,5 +14,6 @@ namespace Free_Course_For_Student.Repository.Interface
         public void Add(Submission submission);
         public void Update(Submission submission);
         public void Delete(int id);
+        public bool IsSubmiss(int? userId,int moduleId);
     }
 }

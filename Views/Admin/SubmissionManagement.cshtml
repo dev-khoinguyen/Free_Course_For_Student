@@ -23,27 +23,35 @@
             {
                 <tr>
                     <td>@submission.SubmissionId</td>
-                    <td>@submission.UserId</td>
-                    <td>@submission.ModuleId</td>
+                    <td>@submission.User?.Username</td> <!-- Hiển thị Username -->
+                    <td>@submission.Module?.Title</td> <!-- Hiển thị Title của Module -->
                     <td><a href="@submission.SubmissionUrl" class="text-primary" target="_blank">View</a></td>
                     <td>
                         <input type="number" class="form-control score-input" data-id="@submission.SubmissionId"
-                               value="@submission.Score" min="0" max="100">
+                            value="@submission.Score" min="0" max="100">
                     </td>
-                    <td>@submission.SubmittedAt?.ToString("yyyy-MM-dd")</td>
+                    <td>@submission.SubmittedAt?.ToString("yyyy-MM-dd HH:mm")</td>
                     <td>
                         <span class="badge @(submission.Status == "Approved" ? "bg-success" : "bg-warning")">
                             @submission.Status
                         </span>
                     </td>
                     <td>
-                        <form method="post" action="/Admin/delete-submission/@submission.SubmissionId" style="display:inline;">
-                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Delete</button>
+                        <form method="post" action="/Admin/delete-submission/@submission.SubmissionId"
+                            style="display:inline;">
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Delete</button>
                         </form>
+                        @if (submission.Status != "Approved")
+                        {
+                            <button class="btn btn-sm btn-success approve-btn"
+                                data-id="@submission.SubmissionId">Approve</button>
+                        }
                     </td>
                 </tr>
             }
         </tbody>
+
     </table>
 </div>
 
@@ -60,6 +68,23 @@
                     body: JSON.stringify({ SubmissionId: submissionId, Score: score })
                 }).then(response => {
                     if (response.ok) alert("Cập nhật điểm thành công!");
+                });
+            });
+        });
+
+        document.querySelectorAll(".approve-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                let submissionId = this.getAttribute("data-id");
+
+                fetch(`/Admin/update-submission`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ SubmissionId: submissionId, Status: "Approved" })
+                }).then(response => {
+                    if (response.ok) {
+                        alert("Bài đã được duyệt!");
+                        location.reload();
+                    }
                 });
             });
         });
