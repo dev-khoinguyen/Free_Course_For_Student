@@ -1,60 +1,62 @@
+@model List<EXE_PROJECT.Models.User>
+
 @{
     ViewData["Title"] = "UserManagement";
-     Layout = "/Views/Shared/_admin-layout.cshtml";
+    Layout = "/Views/Shared/_admin-layout.cshtml";
 }
- <div class="container mt-4">
-        <table class="table table-bordered text-center align-middle">
-            <thead class="table-light">
+
+<div class="container mt-4">
+    <table class="table table-bordered text-center align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>STT</th>
+                <th>Hình</th>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Số điện thoại</th>
+                <th>Quê quán</th>
+                <th>Vai trò</th>
+                <th>Ngày tạo</th>
+                <th>Trạng thái</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                int index = 1;
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@index</td>
+                        <td>
+                            <img src="https://www.w3schools.com/howto/img_avatar.png" 
+                                 alt="User Avatar" 
+                                 class="rounded-circle" 
+                                 style="width: 40px; height: 40px; object-fit: cover;">
+                        </td>
+                        <td>@user.Username</td>
+                        <td>@user.Email</td>
+                        <td>-</td> <!-- Không có số điện thoại trong model -->
+                        <td>-</td> <!-- Không có quê quán trong model -->
+                        <td>@user.Role</td>
+                        <td>@(user.CreatedAt?.ToString("HH:mm dd/MM/yyyy") ?? "-")</td>
+                        <td>
+                            <span class="status-pending--user">Chưa phê duyệt</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-warning btn-sm">Xem xét</button>
+                        </td>
+                    </tr>
+                    index++;
+                }
+            }
+            else
+            {
                 <tr>
-                    <th>STT</th>
-                    <th>Hình</th>
-                    <th>Tên</th>
-                    <th>Email</th>
-                    <th>Số điện thoại</th>
-                    <th>Quê quán</th>
-                    <th>Vai trò</th>
-                    <th>Ngày tạo</th>
-                    <th>Trạng thái</th>
-                    <th>Thao tác</th>
+                    <td colspan="10">Không có dữ liệu</td>
                 </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><div class="rounded-circle bg-secondary" style="width: 40px; height: 40px;"></div></td>
-                    <td>Nguyễn Thanh ....</td>
-                    <td>nguyenthanh......</td>
-                    <td>84xxxxxxxxxx</td>
-                    <td>Sóc Trăng</td>
-                    <td>Giáo viên</td>
-                    <td>0:0 29/6/2023</td>
-                    <td><span class="status-approved--user">Đã phê duyệt</span></td>
-                    <td><button class="btn btn-outline-primary btn-sm">Quyền hạn</button></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td><div class="rounded-circle bg-secondary" style="width: 40px; height: 40px;"></div></td>
-                    <td>Huỳnh Đoàn Đức ....</td>
-                    <td>huynhdoanduc......</td>
-                    <td>84xxxxxxxxxx</td>
-                    <td>Sóc Trăng</td>
-                    <td>Học sinh</td>
-                    <td>0:0 29/6/2023</td>
-                    <td><span class="status-approved--user">Đã phê duyệt</span></td>
-                    <td><button class="btn btn-outline-primary btn-sm">Quyền hạn</button></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td><div class="rounded-circle bg-secondary" style="width: 40px; height: 40px;"></div></td>
-                    <td>Gia Bảo</td>
-                    <td>giabao......</td>
-                    <td>84xxxxxxxxxx</td>
-                    <td>-</td>
-                    <td>Học sinh</td>
-                    <td>5:57 5/3/2024</td>
-                    <td><span class="status-pending--user">Chưa phê duyệt</span></td>
-                    <td><button class="btn btn-outline-warning btn-sm">Xem xét</button></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            }
+        </tbody>
+    </table>
+</div>

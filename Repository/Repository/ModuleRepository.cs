@@ -13,30 +13,36 @@ namespace Free_Course_For_Student.Repository.Repository
         public ModuleRepository(ElearningContext context)
         {
             _context = context;
+        } public List<Module> GetModuleListbycourseid(int courseId)
+        {
+            return _context.Modules.Where(m => m.CourseId == courseId).ToList();
         }
+
+        public Module GetById(int moduleId)
+        {
+            return _context.Modules.FirstOrDefault(m => m.ModuleId == moduleId);
+        }
+
         public void Add(Module module)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int moduleid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Module> GetModuleList(int moduleid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Module> GetModuleListbycourseid(int courseId)
-        {
-            throw new NotImplementedException();
+            _context.Modules.Add(module);
+            _context.SaveChanges();
         }
 
         public void Update(Module module)
         {
-            throw new NotImplementedException();
+            _context.Modules.Update(module);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int moduleId)
+        {
+            var module = GetById(moduleId);
+            if (module != null)
+            {
+                _context.Modules.Remove(module);
+                _context.SaveChanges();
+            }
         }
     }
 }

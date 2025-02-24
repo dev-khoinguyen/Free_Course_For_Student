@@ -1,6 +1,6 @@
 using Free_Course_For_Student.Repository.Interface;
 using Free_Course_For_Student.Repository.Repository;
-using EXE_PROJECT.Models; // Thêm namespace chứa ELEARNINGContext
+using EXE_PROJECT.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -25,6 +25,8 @@ builder.Services.AddDbContext<ElearningContext>(options =>
 // Đăng ký Repository (DI)
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+builder.Services.AddScoped<IModuleRepository, ModuleRepository>();
+builder.Services.AddScoped<ISubmissionRepository, SubmissionRepository>();
 
 // Không cần SqlConnection riêng, vì DbContext đã quản lý kết nối
 // builder.Services.AddTransient<SqlConnection>(_ =>
