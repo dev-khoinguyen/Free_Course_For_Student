@@ -3,6 +3,65 @@
     Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
 <div class="container information-container">
+
+
+    <div class="nav-icons">
+        <a href="#" class="active" onclick="changeActive(event, 'allCourses')">Các khóa học</a>
+        <a href="#" onclick="changeActive(event, 'courseDetails')">Thông tin khóa học</a>
+    </div>
+
+    <div class="container mt-5">
+        <div id="allCourses" class="content active">
+            <h2 class="text-center mb-4">Danh sách các khóa học</h2>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Khóa học HTML <a href="#" class="btn-view" onclick="showDetails('html')">Xem chi tiết</a>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Khóa học CSS <a href="#" class="btn-view" onclick="showDetails('css')">Xem chi tiết</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="courseDetails" class="content">
+            <h2 class="text-center mb-4">Thông tin khóa học</h2>
+            <div id="courseInfo">
+                <p>Chọn một khóa học để xem thông tin chi tiết.</p>
+            </div>
+            <div class="progress mt-3">
+                <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
+                    aria-valuemin="0" aria-valuemax="100">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeActive(event, sectionId) {
+            event.preventDefault();
+            document.querySelectorAll('.nav-icons a').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+
+            document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function showDetails(course) {
+            changeActive(event, 'courseDetails');
+            let details = {
+                html: { title: "Khóa học HTML", progress: 75, content: "Học HTML từ cơ bản đến nâng cao." },
+                css: { title: "Khóa học CSS", progress: 50, content: "Khám phá CSS và cách tạo giao diện đẹp." }
+            };
+
+            let courseData = details[course];
+            document.getElementById("courseInfo").innerHTML = `<h4>${courseData.title}</h4><p>${courseData.content}</p><p>Tiến độ: ${courseData.progress}% hoàn thành.</p>`;
+
+            let progressBar = document.getElementById("progressBar");
+            progressBar.style.width = courseData.progress + "%";
+            progressBar.innerText = courseData.progress + "%";
+        }
+    </script>
+
+
     <div class="information-card">
         <div class="information-tab">
             <button>
@@ -75,37 +134,35 @@
     </div>
 
 </div>
-    <div class="progress-container">
-        <h3 class="text-center">User Course Progress</h3>
-        <div id="course-list">
-            <!-- Courses will be inserted here dynamically -->
+<div class="container mt-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Danh Sách Bài Nộp</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Submission URL</th>
+                                <th>Score</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 1</a></td><td>85</td><td>Đã chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 2</a></td><td>90</td><td>Đã chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 3</a></td><td>Chưa có</td><td>Chưa chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 4</a></td><td>75</td><td>Đã chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 5</a></td><td>80</td><td>Đã chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 6</a></td><td>95</td><td>Đã chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 7</a></td><td>88</td><td>Đã chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 8</a></td><td>76</td><td>Đã chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 9</a></td><td>92</td><td>Đã chấm</td></tr>
+                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 10</a></td><td>85</td><td>Đã chấm</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
-
-    <script>
-        const courses = [
-            { name: "Course 1", allModules: 4, finishedModules: 1 },
-            { name: "Course 2", allModules: 5, finishedModules: 2 },
-            { name: "Course 3", allModules: 6, finishedModules: 3 },
-            { name: "Course 4", allModules: 3, finishedModules: 2 },
-            { name: "Course 5", allModules: 8, finishedModules: 4 }
-        ];
-
-        const courseList = document.getElementById("course-list");
-
-        courses.forEach(course => {
-            let progress = (course.finishedModules / course.allModules) * 100;
-            let courseItem = document.createElement("div");
-            courseItem.classList.add("course-item");
-            courseItem.innerHTML = `
-                <div class="course-title">${course.name}</div>
-                <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" 
-                         style="width: ${progress}%" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100">
-                        ${progress.toFixed(0)}%
-                    </div>
-                </div>
-            `;
-            courseList.appendChild(courseItem);
-        });
-    </script>

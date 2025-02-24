@@ -218,5 +218,9 @@ namespace EXE_PROJECT.Controllers
             }
             return true;
         }
+         public IActionResult ClientSubmission()
+        {
+            return View();
+        }
     }
 }
