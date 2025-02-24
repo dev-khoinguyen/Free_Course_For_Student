@@ -1,3 +1,5 @@
+@model EXE_PROJECT.Models.ProfileViewModel
+
 @{
     ViewData["Title"] = "ClientProfile";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
@@ -25,67 +27,130 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label>Họ và tên</label>
-                        <input readonly class="form-control" type="text" value="" />
-                    </div>
-                    <div class="form-group">
-                        <label>Số điện thoại</label>
-                        <input readonly class="form-control" type="text" value="08253275235" />
+                        <input readonly class="form-control" type="text" value="@Model.User.Username" />
                     </div>
                     <div class="form-group">
                         <label>Địa chỉ email</label>
-                        <input readonly class="form-control" type="email" value="" />
+                        <input readonly class="form-control" type="email" value="@Model.User.Email" />
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Danh sách khóa học -->
-    <div id="courses" class="content">
-        <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Khóa học HTML <a href="#" class="btn-view" onclick="showDetails('html')">Xem chi tiết</a>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                Khóa học CSS <a href="#" class="btn-view" onclick="showDetails('css')">Xem chi tiết</a>
-            </li>
-        </ul>
-        <div id="courseDetails" class="content mt-4">
-            <h2 class="text-center">Thông tin khóa học</h2>
-            <div id="courseInfo">
-                <p>Chọn một khóa học để xem thông tin chi tiết.</p>
-            </div>
-            <div class="progress mt-3">
-                <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0"
-                    aria-valuemin="0" aria-valuemax="100">0%</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Danh sách bài nộp -->
-    <div id="submissions" class="content">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-light">
-                            <tr>
-                                <th>Submission URL</th>
-                                <th>Score</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 1</a></td><td>85</td><td>Đã chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 2</a></td><td>90</td><td>Đã chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 3</a></td><td>Chưa có</td><td>Chưa chấm</td></tr>
-                        </tbody>
-                    </table>
+                    <div class="form-group">
+                        <label>Vai trò</label>
+                        <input readonly class="form-control" type="text" value="@Model.User.Role" />
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày tạo tài khoản</label>
+                        <input readonly class="form-control" type="text"
+                            value="@Model.User.CreatedAt?.ToString("dd/MM/yyyy")" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Danh sách khóa học -->
+<div id="courses" class="content">
+    <ul class="list-group">
+        @if (Model != null && Model.UserCourses != null && Model.UserCourses.Any())
+        {
+            @foreach (var userCourse in Model.UserCourses)
+            {
+                @if (userCourse.Course != null) // Kiểm tra tránh lỗi null
+                {
+                    var progress = (userCourse.AllModule > 0) ? ((double)(userCourse.FinishedModule ?? 0) /
+                    userCourse.AllModule.Value * 100) : 0;
+
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="w-75"> <!-- Giới hạn chiều rộng của nội dung -->
+                            <strong>@userCourse.Course.Title</strong>
+                            <p class="text-muted mb-1">Ngày tham gia:
+                                @(userCourse.EnrolledAt?.ToString("dd/MM/yyyy") ?? "Chưa cập nhật")
+                            </p>
+
+                            <!-- Thanh tiến độ nhỏ hơn -->
+                            <div class="progress mt-2" style="height: 14px;; width: 100%;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary"                    
+                                      role="progressbar" style="width: @progress%;" aria-valuenow="@progress"          
+                                    aria-valuemin="0" aria-valuemax="100">
+                                </div>
+                            </div>
+                            <small>@progress.ToString("0")% hoàn thành</small>
+                        </div>
+
+                        <a href="CourseInformation/@userCourse.Course.Id" class="btn btn-primary">
+                            Xem chi tiết
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="list-group-item">Dữ liệu khóa học không tồn tại.</li>
+                }
+            }
+        }
+        else
+        {
+            <li class="list-group-item">Bạn chưa tham gia khóa học nào.</li>
+        }
+    </ul>
+</div>
+
+
+
+
+<!-- Danh sách bài nộp -->
+<div id="submissions" class="content">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h3 class="text-center">Danh sách bài nộp và điểm</h3>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Submission URL</th>
+                            <th>Score</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Submissions.Any())
+                        {
+                            @foreach (var submission in Model.Submissions)
+                            {
+                                <tr>
+                                    <td>
+                                        @if
+                                                                        (!string.IsNullOrEmpty(submission.SubmissionUrl))
+                                        {
+                                            <a href="@submission.SubmissionUrl" target="_blank">Xem bài nộp</a>
+                                        }
+                                        else
+                                        {
+                                            <span>Chưa có</span>
+                                        }
+                                </td>
+                                <td>
+                                    @(submission.Score.HasValue ?
+                                                                    submission.Score.Value.ToString("0.00") : "Chưa có")
+                                </td>
+                                <td>@submission.Status</td>
+                            </tr>
+                                                }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3" class="text-center">Bạn chưa có bài nộp nào.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <style>
     .content {
@@ -98,6 +163,7 @@
         left: 0;
         visibility: hidden;
     }
+
     .content.active {
         position: relative;
         opacity: 1;
@@ -135,4 +201,3 @@
         progressBar.innerText = courseData.progress + "%";
     }
 </script>
-

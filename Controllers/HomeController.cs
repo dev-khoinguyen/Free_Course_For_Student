@@ -20,7 +20,8 @@ namespace EXE_PROJECT.Controllers
         private readonly IUserCourseRepository _userCourseRepository;
         private readonly ISubmissionRepository _submissionRepository;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository, IUserCourseRepository userCourseRepository, ISubmissionRepository submissionRepository)
+        private readonly IProfileRepository _profileRepository;
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository, IUserCourseRepository userCourseRepository, IProfileRepository profileRepository, ISubmissionRepository submissionRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
@@ -28,6 +29,7 @@ namespace EXE_PROJECT.Controllers
             _moduleRepository = moduleRepository;
             _userCourseRepository = userCourseRepository;
             _submissionRepository = submissionRepository;
+            _profileRepository = profileRepository;
         }
 
         public IActionResult Index()
@@ -204,11 +206,27 @@ namespace EXE_PROJECT.Controllers
         }
         public IActionResult ClientProfile()
         {
+            int? userId = HttpContext.Session.GetInt32("UserId");
             if (!IsLogin())
             {
                 return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
             }
-            return View();
+            var user = _profileRepository.GetUserById(userId.Value); // Lấy thông tin User
+            var userCourses = _profileRepository.GetUserCourses(user.Id);
+            var userScores = _profileRepository.GetUserScores(user.Id);
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Home"); // Nếu không tìm thấy user, quay về đăng nhập
+            }
+
+            var viewModel = new ProfileViewModel
+            {
+                User = user,
+                UserCourses = userCourses,
+               Submissions = userScores
+
+            };
+            return View(viewModel);
         }
 
         public bool IsLogin()
