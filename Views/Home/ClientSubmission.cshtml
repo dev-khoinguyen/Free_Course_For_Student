@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "ClientSubmission";
+       Layout = "/Views/Shared/_homepage-layout.cshtml";
+}
+  <div class="container mt-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Nộp Bài</h5>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="submissionUrl" class="form-label">Link Google Drive</label>
+                        <input type="url" class="form-control" id="submissionUrl" placeholder="Nhập link Google Drive">
+                    </div>
+                    <button type="submit" class="btn btn-success">Nộp bài</button>
+                </form>
+            </div>
+        </div>
+  </div>

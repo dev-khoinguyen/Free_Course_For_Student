@@ -2170,3 +2170,13 @@ h2 {
 .btn-view:hover {
   background-color: #0056b3;
 }
+/* danh sach bai nop  */
+.table-responsive {
+  max-height: 300px;
+  overflow-y: auto;
+}
+/* danh sach khoa hoc  */
+#allCourses {
+  max-height: 300px;
+  overflow-y: auto;
+}
