@@ -2,29 +2,56 @@
     ViewData["Title"] = "ClientProfile";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
-<div class="container information-container">
 
-
+<div class="container mt-5">
+    <!-- Tabs -->
     <div class="nav-icons">
-        <a href="#" class="active" onclick="changeActive(event, 'allCourses')">Các khóa học</a>
-        <a href="#" onclick="changeActive(event, 'courseDetails')">Thông tin khóa học</a>
+        <a href="#" class="active" onclick="changeTab(event, 'profile')">Thông tin tài khoản</a>
+        <a href="#" onclick="changeTab(event, 'courses')">Các khóa học</a>
+        <a href="#" onclick="changeTab(event, 'submissions')">Bài nộp</a>
     </div>
 
-    <div class="container mt-5">
-        <div id="allCourses" class="content active">
-            <h2 class="text-center mb-4">Danh sách các khóa học</h2>
-            <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Khóa học HTML <a href="#" class="btn-view" onclick="showDetails('html')">Xem chi tiết</a>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Khóa học CSS <a href="#" class="btn-view" onclick="showDetails('css')">Xem chi tiết</a>
-                </li>
-            </ul>
+    <!-- Thông tin cá nhân -->
+    <div id="profile" class="content active">
+        <div class="information-card">
+            <div class="text-center mb-4">
+                <p class="font-weight-bold">Ảnh đại diện</p>
+                <img class="information-profile-pic" height="100"
+                    src="https://storage.googleapis.com/a1aa/image/VR_nnWwcQ3FmfiAEsUPA-2z5RFR6kQzjJMTCoeRoYM4.jpg"
+                    width="100" />
+            </div>
+            <div class="border p-4 rounded">
+                <h2 class="information-section-title">Thông tin cá nhân</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Họ và tên</label>
+                        <input readonly class="form-control" type="text" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input readonly class="form-control" type="text" value="08253275235" />
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ email</label>
+                        <input readonly class="form-control" type="email" value="" />
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <div id="courseDetails" class="content">
-            <h2 class="text-center mb-4">Thông tin khóa học</h2>
+    <!-- Danh sách khóa học -->
+    <div id="courses" class="content">
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Khóa học HTML <a href="#" class="btn-view" onclick="showDetails('html')">Xem chi tiết</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                Khóa học CSS <a href="#" class="btn-view" onclick="showDetails('css')">Xem chi tiết</a>
+            </li>
+        </ul>
+        <div id="courseDetails" class="content mt-4">
+            <h2 class="text-center">Thông tin khóa học</h2>
             <div id="courseInfo">
                 <p>Chọn một khóa học để xem thông tin chi tiết.</p>
             </div>
@@ -35,110 +62,9 @@
         </div>
     </div>
 
-    <script>
-        function changeActive(event, sectionId) {
-            event.preventDefault();
-            document.querySelectorAll('.nav-icons a').forEach(el => el.classList.remove('active'));
-            event.target.classList.add('active');
-
-            document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-        }
-
-        function showDetails(course) {
-            changeActive(event, 'courseDetails');
-            let details = {
-                html: { title: "Khóa học HTML", progress: 75, content: "Học HTML từ cơ bản đến nâng cao." },
-                css: { title: "Khóa học CSS", progress: 50, content: "Khám phá CSS và cách tạo giao diện đẹp." }
-            };
-
-            let courseData = details[course];
-            document.getElementById("courseInfo").innerHTML = `<h4>${courseData.title}</h4><p>${courseData.content}</p><p>Tiến độ: ${courseData.progress}% hoàn thành.</p>`;
-
-            let progressBar = document.getElementById("progressBar");
-            progressBar.style.width = courseData.progress + "%";
-            progressBar.innerText = courseData.progress + "%";
-        }
-    </script>
-
-
-    <div class="information-card">
-        <div class="information-tab">
-            <button>
-                Thông tin tài khoản
-            </button>
-        </div>
-        <div class="text-center mb-4">
-            <p class="font-weight-bold">
-                Ảnh đại diện
-            </p>
-            <img alt="Profile picture placeholder" class="information-profile-pic" height="100"
-                src="https://storage.googleapis.com/a1aa/image/VR_nnWwcQ3FmfiAEsUPA-2z5RFR6kQzjJMTCoeRoYM4.jpg"
-                width="100" />
-
-        </div>
-        <div class="border p-4 rounded">
-            <h2 class="information-section-title">
-                Thông tin cá nhân
-            </h2>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="information-name">
-                        Họ và tên
-                    </label>
-                    <input readonly class="form-control" id="information-name" type="text" value="" />
-                </div>
-                <div class="form-group">
-                    <label for="information-phone">
-                        Số điện thoại
-                    </label>
-                    <input readonly class="form-control" id="information-phone" type="text" value="08253275235" />
-                </div>
-                <div class="form-group">
-                    <label for="information-email">
-                        Địa chỉ email
-                    </label>
-                    <input readonly class="form-control" id="information-email" type="email" value="" />
-                </div>
-                <div class="form-group">
-                    <label for="information-gender">
-                        Giới tính
-                    </label>
-                    <select class="form-control" id="information-gender">
-                        <option>
-                            Nam
-                        </option>
-                        <option>
-                            Nữ
-                        </option>
-                        <option>
-                            Khác
-                        </option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="information-dob">
-                        Ngày sinh
-                    </label>
-                    <input readonly class="form-control" id="information-dob" placeholder="01/05/2003" type="text" />
-                </div>
-                <div class="form-group">
-                    <label for="information-address">
-                        Địa chỉ chi tiết
-                    </label>
-                    <input readonly class="form-control" id="information-address" type="text"
-                        value="Mỹ Xuyên, Sóc Trăng" />
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
-<div class="container mt-5">
+    <!-- Danh sách bài nộp -->
+    <div id="submissions" class="content">
         <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
-                <h5 class="mb-0">Danh Sách Bài Nộp</h5>
-            </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered">
@@ -153,16 +79,60 @@
                             <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 1</a></td><td>85</td><td>Đã chấm</td></tr>
                             <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 2</a></td><td>90</td><td>Đã chấm</td></tr>
                             <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 3</a></td><td>Chưa có</td><td>Chưa chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 4</a></td><td>75</td><td>Đã chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 5</a></td><td>80</td><td>Đã chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 6</a></td><td>95</td><td>Đã chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 7</a></td><td>88</td><td>Đã chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 8</a></td><td>76</td><td>Đã chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 9</a></td><td>92</td><td>Đã chấm</td></tr>
-                            <tr><td><a href="https://drive.google.com" target="_blank">Bài nộp 10</a></td><td>85</td><td>Đã chấm</td></tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<style>
+    .content {
+        opacity: 0;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+    }
+    .content.active {
+        position: relative;
+        opacity: 1;
+        transform: translateX(0);
+        visibility: visible;
+    }
+</style>
+
+<script>
+    function changeTab(event, tabId) {
+        event.preventDefault();
+
+        document.querySelectorAll('.nav-icons a').forEach(el => el.classList.remove('active'));
+        event.target.classList.add('active');
+
+        document.querySelectorAll('.content').forEach(el => {
+            el.classList.remove('active');
+        });
+
+        let activeTab = document.getElementById(tabId);
+        activeTab.classList.add('active');
+    }
+
+    function showDetails(course) {
+        let details = {
+            html: { title: "Khóa học HTML", progress: 75, content: "Học HTML từ cơ bản đến nâng cao." },
+            css: { title: "Khóa học CSS", progress: 50, content: "Khám phá CSS và cách tạo giao diện đẹp." }
+        };
+
+        let courseData = details[course];
+        document.getElementById("courseInfo").innerHTML = `<h4>${courseData.title}</h4><p>${courseData.content}</p><p>Tiến độ: ${courseData.progress}% hoàn thành.</p>`;
+
+        let progressBar = document.getElementById("progressBar");
+        progressBar.style.width = courseData.progress + "%";
+        progressBar.innerText = courseData.progress + "%";
+    }
+</script>
+
