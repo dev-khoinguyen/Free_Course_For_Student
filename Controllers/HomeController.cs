@@ -19,13 +19,15 @@ namespace EXE_PROJECT.Controllers
         private readonly IModuleRepository _moduleRepository;
         private readonly IUserCourseRepository _userCourseRepository;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository, IUserCourseRepository userCourseRepository)
+        private readonly IProfileRepository _profileRepository;
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository, IUserCourseRepository userCourseRepository, IProfileRepository profileRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
             _courseRepository = courseRepository;
             _moduleRepository = moduleRepository;
             _userCourseRepository = userCourseRepository;
+            _profileRepository = profileRepository;
         }
 
         public IActionResult Index()
@@ -154,11 +156,11 @@ namespace EXE_PROJECT.Controllers
             var validate = _userCourseRepository.IsJoin(id, user);
             if (validate)
             {
-                ViewBag.isJoin=true;
+                ViewBag.isJoin = true;
             }
             else
             {
-                ViewBag.isJoin=false;
+                ViewBag.isJoin = false;
             }
             var course = _courseRepository.GetCourseById(id);
             if (course == null)
@@ -176,7 +178,7 @@ namespace EXE_PROJECT.Controllers
             _userCourseRepository.AddUserCourse(userId, id);
             return RedirectToAction("CourseInformation", new { id = id });
         }
-        
+
 
 
         [HttpGet]
@@ -202,11 +204,27 @@ namespace EXE_PROJECT.Controllers
         }
         public IActionResult ClientProfile()
         {
+            int? userId = HttpContext.Session.GetInt32("UserId");
             if (!IsLogin())
             {
                 return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
             }
-            return View();
+            var user = _profileRepository.GetUserById(userId.Value); // Lấy thông tin User
+            var userCourses = _profileRepository.GetUserCourses(user.Id);
+            var userScores = _profileRepository.GetUserScores(user.Id);
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Home"); // Nếu không tìm thấy user, quay về đăng nhập
+            }
+
+            var viewModel = new ProfileViewModel
+            {
+                User = user,
+                UserCourses = userCourses,
+               Submissions = userScores
+
+            };
+            return View(viewModel);
         }
 
         public bool IsLogin()
@@ -218,7 +236,7 @@ namespace EXE_PROJECT.Controllers
             }
             return true;
         }
-         public IActionResult ClientSubmission()
+        public IActionResult ClientSubmission()
         {
             return View();
         }
