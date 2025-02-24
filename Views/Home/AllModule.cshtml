@@ -14,13 +14,16 @@
         {
             <div class="module-card--cl-module">
                 <h5 class="module-title--cl-module">Module @module.Position: @module.Title</h5>
-                <p class="module-description--cl-module">@module.Description</p>
-                <a href="/Home/ModuleDetail/@module.ModuleId" class="btn btn-primary module-btn--cl-module">Xem chi tiết</a>
+                <p class="module-description--cl-module">
+                    @(module.Description.Length > 100 ? module.Description.Substring(0, 100) + "..." : module.Description)
+                </p>
+                <a href="/Home/ModuleInformation/@module.ModuleId" class="btn btn-primary module-btn--cl-module">Xem chi
+                    tiết</a>
             </div>
         }
     }
     else
     {
-        <p class="text-center text-muted">Chưa có module nào.</p>
+        <p class="text-center text-muted">Chưa có module nào!! Cần Đăng ký đủ số lượng để mở Module!!</p>
     }
 </div>

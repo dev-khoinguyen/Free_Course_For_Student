@@ -9,7 +9,41 @@
     <div class="card course-card--cl-module">
         <h5 class="course-title--cl-module">@Model.Title</h5>
         <p class="course-description--cl-module">@Model.Description</p>
-        <a href="@Model.GroupChatUrl" class="btn btn-primary course-btn--cl-module" target="_blank">Tham gia nhóm</a>
-        <a asp-action="AllModule" asp-controller="Home" asp-route-id="@Model.Id" class="btn btn-secondary course-btn--cl-module">Xem các Module</a>
+
+        @if (Model.GroupChatUrl == null)
+        {
+            <a href="#" class="btn btn-primary course-btn--cl-module">Nhóm Chat Chưa Được Tạo</a>
+        }
+        else
+        {
+            <a href="@Model.GroupChatUrl" class="btn btn-primary course-btn--cl-module" target="_blank">Tham gia nhóm</a>
+        }
+
+        @if (ViewBag.isJoin == true)
+        {
+            <a asp-action="AllModule" asp-controller="Home" asp-route-id="@Model.Id"
+                class="btn btn-secondary course-btn--cl-module">Xem các Module</a>
+        }
+        else
+        {
+            <form asp-action="JoinCourse" asp-controller="Home" method="post" class="d-inline w-100">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button type="submit" class="btn btn-warning course-btn--cl-module btn-full">Tham Gia Khóa Học</button>
+            </form>
+
+
+        }
     </div>
 </div>
+<style>
+    .btn-full {
+        width: 100%;
+        border-radius: 30px;
+        /* Làm bo tròn giống nút trên */
+        padding: 12px 0;
+        /* Điều chỉnh khoảng cách trong nút */
+        font-size: 16px;
+        /* Cỡ chữ phù hợp */
+        text-align: center;
+    }
+</style>

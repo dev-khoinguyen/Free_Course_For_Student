@@ -4,8 +4,7 @@
 }
 @model List<EXE_PROJECT.Models.Course>
 
-<h2 class="material-title">Học liệu của tôi</h2>
-<a class="button-upload" asp-controller="Home" asp-action="UploadResource">Tải lên học liệu</a>
+<h2 class="material-title">Các Khóa Học</a></h2>
 <div class="container learning-wrapper">
 
 
@@ -21,10 +20,6 @@
                                 alt="Course Image">
                             <p>@course.Description</p>
                         </a>
-                        <a href="#" class="btn-learning-custom">
-                            <img src="/common/images/save_outline.png" alt="Icon" />
-                            Lưu học liệu
-                        </a>
                     </div>
                 }
             }
@@ -34,10 +29,6 @@
                     <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400"
                         alt="Placeholder Image">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <a href="#" class="btn-learning-custom">
-                        <img src="/common/images/save_outline.png" alt="Icon" />
-                        Lưu học liệu
-                    </a>
                 </div>
             }
         </div>
@@ -136,10 +127,6 @@
                     <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" 
                          alt="Course Image" style="width: 100%; height: auto;">
                     <p>@course.Description</p>
-                </a>
-                <a href="#" class="btn-learning-custom">
-                    <img src="/common/images/save_outline.png" alt="Icon" />
-                    Lưu học liệu
                 </a>
             </div>
         }

@@ -14,11 +14,11 @@ namespace Free_Course_For_Student.Repository.Repository
         {
             _context = context;
         }
-        public void AddUserCourse(int userId, int courseId)
+        public void AddUserCourse(int? userId, int courseId)
         {
             var userCourse = new UserCourse
             {
-                UserId = userId,
+                UserId = userId.Value,
                 CourseId = courseId,
                 EnrolledAt = DateTime.UtcNow // Lưu thời gian đăng ký (tùy chọn)
             };
@@ -51,6 +51,11 @@ namespace Free_Course_For_Student.Repository.Repository
         public List<UserCourse> GetUserCourseByUserId(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public bool IsJoin(int courseId, int? userId)
+        {
+            return _context.UserCourses.Any(s => s.CourseId == courseId && s.UserId == userId);
         }
 
         public void UpdateUserCourse(UserCourse userCourse)

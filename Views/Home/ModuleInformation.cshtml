@@ -2,6 +2,7 @@
     ViewData["Title"] = "ModuleInformation";
     Layout = "/Views/Shared/_homepage-layout.cshtml";
 }
+@model EXE_PROJECT.Models.Module
 
 <!-- Facebook SDK -->
 <div id="fb-root"></div>
@@ -14,12 +15,21 @@
 </div>
 @* content and title  *@
 <div class="module-info">
-    <h1>tiêu đề video</h1>
-    <p>Nội dung videoooooooooooo</p>
+    <h1>@Model.Title</h1>
+    <p>@Model.Description</p>
 </div>
 <div class="button-group">
-    <a asp-action="AllModule" class="big-button back-button">⬅ Quay lại</a>
+    @if (!string.IsNullOrEmpty(Model.DocUrl))
+    {
+        <a href="@Model.DocUrl" target="_blank" class="big-button resource-button">📚 Tài nguyên</a>
+    }
+    else
+    {
+        <span class="no-resource">🚫 Chưa có tài nguyên</span>
+    }
     <a class="big-button submit-button">📤 Nộp bài</a>
+    <a asp-action="AllModule" asp-controller="Home" asp-route-id="@Model.CourseId" class="big-button back-button">⬅ Quay
+        lại</a>
 </div>
 <style>
     #video-container {
@@ -139,6 +149,25 @@
         color: #666;
         line-height: 1.5;
     }
+
+    .resource-button {
+        background: #ffc107;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        transition: 0.3s;
+        display: inline-block;
+    }
+
+    .resource-button:hover {
+        background: #e0a800;
+    }
+
+    .no-resource {
+        color: #999;
+        font-size: 14px;
+        font-style: italic;
+        margin-left: 10px;
+    }
 </style>
 
 
@@ -180,6 +209,6 @@
         }
     }
 
-    let videoUrl = "https://www.youtube.com/watch?v=Ik3OAX8n018";
+    let videoUrl = "@Model.VideoUrl";
     loadVideo(videoUrl);
 </script>

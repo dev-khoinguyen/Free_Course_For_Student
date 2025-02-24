@@ -17,13 +17,15 @@ namespace EXE_PROJECT.Controllers
         private readonly IUserRepository _userRepository;
         private readonly ICourseRepository _courseRepository;
         private readonly IModuleRepository _moduleRepository;
+        private readonly IUserCourseRepository _userCourseRepository;
 
-        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository)
+        public HomeController(ILogger<HomeController> logger, IUserRepository userRepository, ICourseRepository courseRepository, IModuleRepository moduleRepository, IUserCourseRepository userCourseRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
             _courseRepository = courseRepository;
             _moduleRepository = moduleRepository;
+            _userCourseRepository = userCourseRepository;
         }
 
         public IActionResult Index()
@@ -142,11 +144,22 @@ namespace EXE_PROJECT.Controllers
         [HttpGet]
         public IActionResult CourseInformation(int id)
         {
+
             if (!IsLogin())
             {
                 return RedirectToAction("Login", "Home");
             }
 
+            var user = HttpContext.Session.GetInt32("UserId");
+            var validate = _userCourseRepository.IsJoin(id, user);
+            if (validate)
+            {
+                ViewBag.isJoin=true;
+            }
+            else
+            {
+                ViewBag.isJoin=false;
+            }
             var course = _courseRepository.GetCourseById(id);
             if (course == null)
             {
@@ -155,6 +168,15 @@ namespace EXE_PROJECT.Controllers
 
             return View(course);
         }
+
+        [HttpPost]
+        public IActionResult JoinCourse(int id)
+        {
+            var userId = HttpContext.Session.GetInt32("UserId");
+            _userCourseRepository.AddUserCourse(userId, id);
+            return RedirectToAction("CourseInformation", new { id = id });
+        }
+        
 
 
         [HttpGet]
@@ -167,13 +189,16 @@ namespace EXE_PROJECT.Controllers
             var module = _moduleRepository.GetAvaiModule(id);
             return View(module);
         }
-        public IActionResult ModuleInformation()
+
+        [HttpGet]
+        public IActionResult ModuleInformation(int id)
         {
             if (!IsLogin())
             {
                 return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
             }
-            return View();
+            var module = _moduleRepository.GetById(id);
+            return View(module);
         }
         public IActionResult ClientProfile()
         {
