@@ -5,14 +5,35 @@
     Layout = "/Views/Shared/_admin-layout.cshtml";
 }
 
+<!-- Cập nhật CKEditor lên phiên bản mới nhất -->
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
+
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (document.getElementById("Description")) {
+            CKEDITOR.replace('Description');
+        }
+    });
+
     function editCourse(id, title, description, groupChatURL) {
         document.querySelector("input[name='Id']").value = id;
         document.querySelector("input[name='Title']").value = title;
-        document.querySelector("textarea[name='Description']").value = description;
         document.querySelector("input[name='GroupChatUrl']").value = groupChatURL;
+
+        if (CKEDITOR.instances['Description']) {
+            CKEDITOR.instances['Description'].setData(description);
+        } else {
+            document.getElementById("Description").value = description;
+        }
     }
 </script>
+<style>
+    .cke_notification {
+        display: none !important;
+    }
+</style>
+
 
 <div class="container container--course">
     <h2 class="title--course">Thêm/Sửa khóa học</h2>
@@ -27,7 +48,7 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label form-label--course">Mô tả</label>
-                    <textarea name="Description" class="form-control" required></textarea>
+                    <textarea name="Description" id="Description" class="form-control" required></textarea>
                 </div>
                 <div class="mb-3">
                     <label class="form-label form-label--course">URL nhóm</label>
@@ -54,7 +75,7 @@
                 <tr>
                     <td>@course.Id</td>
                     <td>@course.Title</td>
-                    <td>@course.Description</td>
+                    <td>@Html.Raw(course.Description)</td> <!-- Hiển thị HTML đúng cách -->
                     <td>
                         @if (!string.IsNullOrEmpty(course.GroupChatUrl))
                         {
@@ -63,7 +84,7 @@
                     </td>
                     <td>
                         <button type="button" class="btn btn-warning btn-sm btn--course"
-                            onclick="editCourse('@course.Id', '@course.Title', '@course.Description', '@course.GroupChatUrl')">
+                            onclick="editCourse('@course.Id', '@course.Title', `@Html.Raw(course.Description)`, '@course.GroupChatUrl')">
                             Sửa
                         </button>
                         <form method="post" action="/Admin/course/delete/@course.Id" style="display:inline;">
@@ -75,7 +96,6 @@
                         <a href="/Admin/module-management/@course.Id" class="btn btn-info btn-sm">
                             Quản lý Module
                         </a>
-
                     </td>
                 </tr>
             }

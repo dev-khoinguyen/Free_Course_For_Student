@@ -3,18 +3,36 @@
     Layout = "/Views/Shared/_admin-layout.cshtml";
 }
 
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (document.querySelector("textarea[name='Description']")) {
+            CKEDITOR.replace('Description');
+        }
+    });
+
     function editModule(id, title, position, docURL, videoURL, description, isFinished) {
         document.querySelector("input[name='ModuleId']").value = id;
         document.querySelector("input[name='Title']").value = decodeURIComponent(title);
         document.querySelector("input[name='Position']").value = position;
         document.querySelector("input[name='DocUrl']").value = decodeURIComponent(docURL);
         document.querySelector("input[name='VideoUrl']").value = decodeURIComponent(videoURL);
-        document.querySelector("textarea[name='Description']").value = decodeURIComponent(description);
         document.querySelector("select[name='IsFinished']").value = isFinished;
+
+        if (CKEDITOR.instances['Description']) {
+            CKEDITOR.instances['Description'].setData(decodeURIComponent(description));
+        } else {
+            document.querySelector("textarea[name='Description']").value = decodeURIComponent(description);
+        }
     }
 </script>
 
+<style>
+    .cke_notification {
+        display: none !important;
+    }
+</style>
 
 <div class="container">
     <h2>Quản lý Module</h2>
@@ -81,7 +99,7 @@
                     <td>@module.Position</td>
                     <td><a href="@module.DocUrl" target="_blank">Tài liệu</a></td>
                     <td><a href="@module.VideoUrl" target="_blank">Video</a></td>
-                    <td>@module.Description</td>
+                    <td>@Html.Raw(module.Description)</td>
                     <td>@(module.IsFinished == true ? "Đã hoàn thành" : "Chưa hoàn thành")</td>
                     <td>
                         <button type="button" class="btn btn-warning btn-sm" onclick="editModule(

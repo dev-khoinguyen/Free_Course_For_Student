@@ -12,14 +12,17 @@
     {
         foreach (var module in Model)
         {
-            <div class="module-card--cl-module">
-                <h5 class="module-title--cl-module">Module @module.Position: @module.Title</h5>
-                <p class="module-description--cl-module">
-                    @(module.Description.Length > 100 ? module.Description.Substring(0, 100) + "..." : module.Description)
-                </p>
-                <a href="/Home/ModuleInformation/@module.ModuleId" class="btn btn-primary module-btn--cl-module">Xem chi
-                    tiết</a>
-            </div>
+    <div class="module-card--cl-module">
+        <h5 class="module-title--cl-module">Module @module.Position: @module.Title</h5>
+        <p class="module-description--cl-module">
+            @Html.Raw(!string.IsNullOrEmpty(module.Description) && module.Description.Length > 100
+                        ? module.Description.Substring(0, 100) + "..."
+                        : module.Description)
+        </p>
+
+        <a href="/Home/ModuleInformation/@module.ModuleId" class="btn btn-primary module-btn--cl-module">Xem chi
+            tiết</a>
+    </div>
         }
     }
     else

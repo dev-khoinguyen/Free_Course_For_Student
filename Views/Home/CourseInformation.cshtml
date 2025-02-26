@@ -15,7 +15,7 @@
 <div class="container course-container--cl-module">
     <div class="card course-card--cl-module">
         <h5 class="course-title--cl-module">@Model.Title</h5>
-        <p class="course-description--cl-module">@Model.Description</p>
+        <p class="course-description--cl-module">@Html.Raw(Model.Description)</p>
 
         @if (Model.GroupChatUrl == null)
         {

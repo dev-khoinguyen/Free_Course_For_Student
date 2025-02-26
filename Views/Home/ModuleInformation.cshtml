@@ -16,7 +16,7 @@
 @* content and title  *@
 <div class="module-info">
     <h1>@Model.Title</h1>
-    <p>@Model.Description</p>
+    <p>@Html.Raw(Model.Description)</p>
 </div>
 <div class="button-group">
     @if (!string.IsNullOrEmpty(Model.DocUrl))
@@ -147,6 +147,7 @@
     .module-info p {
         font-size: 18px;
         color: #666;
+        text-align: left;
         line-height: 1.5;
     }
 
