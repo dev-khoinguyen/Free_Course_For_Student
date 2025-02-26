@@ -211,23 +211,33 @@ namespace EXE_PROJECT.Controllers
             {
                 return RedirectToAction("Login", "Home"); // Nếu chưa đăng nhập, quay về Login
             }
+
             var user = _profileRepository.GetUserById(userId.Value); // Lấy thông tin User
-            var userCourses = _profileRepository.GetUserCourses(user.Id);
-            var userScores = _profileRepository.GetUserScores(user.Id);
             if (user == null)
             {
                 return RedirectToAction("Login", "Home"); // Nếu không tìm thấy user, quay về đăng nhập
+            }
+
+            var userCourses = _profileRepository.GetUserCourses(user.Id);
+            var userScores = _profileRepository.GetUserScores(user.Id);
+
+            // 🟢 Cập nhật dữ liệu mỗi khi truy cập ClientProfile
+            foreach (var userCourse in userCourses)
+            {
+                _userCourseRepository.UpdateCourseCount(userCourse.CourseId, user.Id);
+                _userCourseRepository.UpdateFinishCourse(userCourse.CourseId, user.Id);
             }
 
             var viewModel = new ProfileViewModel
             {
                 User = user,
                 UserCourses = userCourses,
-               Submissions = userScores
-
+                Submissions = userScores
             };
+
             return View(viewModel);
         }
+
 
         public bool IsLogin()
         {
