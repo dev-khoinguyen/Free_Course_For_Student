@@ -27,7 +27,8 @@
     {
         <span class="no-resource">🚫 Chưa có tài nguyên</span>
     }
-    <a asp-action="ClientSubmission" asp-controller="Home" asp-route-itemid="@Model.ModuleId" class="big-button submit-button">📤 Nộp bài</a>
+    <a asp-action="ClientSubmission" asp-controller="Home" asp-route-itemid="@Model.ModuleId"
+        class="big-button submit-button">📤 Nộp bài</a>
     <a asp-action="AllModule" asp-controller="Home" asp-route-id="@Model.CourseId" class="big-button back-button">⬅ Quay
         lại</a>
 </div>
@@ -204,6 +205,15 @@
         else if (videoUrl.includes("instagram.com/reel") || videoUrl.includes("instagram.com/p/")) {
             container.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${videoUrl}" data-instgrm-version="14"></blockquote>`;
             setTimeout(() => instgrm.Embeds.process(), 500);
+        }
+        else if (videoUrl.includes("drive.google.com/file/d/")) {
+            let videoId = videoUrl.match(/\/d\/(.+?)\//)?.[1];
+            if (videoId) {
+                let embedUrl = `https://drive.google.com/file/d/${videoId}/preview`;
+                container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+            } else {
+                container.innerHTML = "<p>URL Google Drive không hợp lệ.</p>";
+            }
         }
         else {
             container.innerHTML = "<p>URL không hợp lệ hoặc không được hỗ trợ.</p>";

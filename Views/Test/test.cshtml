@@ -97,11 +97,22 @@
             container.innerHTML = `<blockquote class="instagram-media" data-instgrm-permalink="${videoUrl}" data-instgrm-version="14"></blockquote>`;
             setTimeout(() => instgrm.Embeds.process(), 500);
         }
+        else if (videoUrl.includes("drive.google.com/file/d/")) {
+            let videoId = videoUrl.match(/\/d\/(.+?)\//)?.[1];
+            if (videoId) {
+                let embedUrl = `https://drive.google.com/file/d/${videoId}/preview`;
+                container.innerHTML = `<iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>`;
+            } else {
+                container.innerHTML = "<p>URL Google Drive không hợp lệ.</p>";
+            }
+        }
         else {
             container.innerHTML = "<p>URL không hợp lệ hoặc không được hỗ trợ.</p>";
         }
-    
+    }
 
-    let videoUrl = "https://www.youtube.com/watch?v=Ik3OAX8n018"; 
+    // Ví dụ sử dụng:
+    let videoUrl = "https://drive.google.com/file/d/1hV2aNfFfiItZesgsfEOgIAfPfzQnIYnN/view?usp=drive_link"; 
     loadVideo(videoUrl);
 </script>
+
