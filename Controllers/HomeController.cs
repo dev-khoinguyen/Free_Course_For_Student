@@ -222,11 +222,11 @@ namespace EXE_PROJECT.Controllers
             var userScores = _profileRepository.GetUserScores(user.Id);
 
             // 🟢 Cập nhật dữ liệu mỗi khi truy cập ClientProfile
-            foreach (var userCourse in userCourses)
-            {
-                _userCourseRepository.UpdateCourseCount(userCourse.CourseId, user.Id);
-                _userCourseRepository.UpdateFinishCourse(userCourse.CourseId, user.Id);
-            }
+            // foreach (var userCourse in userCourses)
+            // {
+            //     _userCourseRepository.UpdateCourseCount(userCourse.CourseId, user.Id);
+            //     _userCourseRepository.UpdateFinishCourse(userCourse.CourseId, user.Id);
+            // }
 
             var viewModel = new ProfileViewModel
             {
